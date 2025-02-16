@@ -1,0 +1,2053 @@
+interactions:
+- request:
+    body: '{"max_tokens": 1024, "messages": [{"role": "user", "content": "Who is the
+      founder of LangChain?"}], "model": "claude-3-5-sonnet-20240620", "system": "You
+      are a helpful AI assistant.\n\nSystem time: 2024-11-13T23:50:53.832822+00:00",
+      "tools": [{"name": "search", "description": "Search for general web results.
+      This function performs a search using the Tavily search engine, which is designed\nto
+      provide comprehensive, accurate, and trusted results. It''s particularly useful\nfor
+      answering questions about current events.", "input_schema": {"properties": {"query":
+      {"type": "string"}}, "required": ["query"], "type": "object"}}]}'
+    headers: {}
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        AwCzkxon7QEAAA==
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 8e22ab88f99c4cb1-PHL
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 13 Nov 2024 23:51:31 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Robots-Tag:
+      - none
+      anthropic-ratelimit-requests-limit:
+      - '4000'
+      anthropic-ratelimit-requests-remaining:
+      - '3999'
+      anthropic-ratelimit-requests-reset:
+      - '2024-11-13T23:51:29Z'
+      anthropic-ratelimit-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '400000'
+      anthropic-ratelimit-tokens-reset:
+      - '2024-11-13T23:51:31Z'
+      request-id:
+      - req_PLACEHOLDER_FOR_SECRET_ID
+      via:
+      - 1.1 google
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers: {}
+    method: POST
+    uri: https://api.tavily.com/search
+  response:
+    body:
+      string: '{"query":"founder of LangChain","follow_up_questions":null,"answer":null,"images":[],"results":[{"title":"Speaker
+        Harrison Chase - ELC","url":"https://sfelc.PLACEHOLDER_FOR_SECRET_ID-chase","content":"Harrison
+        Chase is the CEO and co-founder of LangChain, a company formed around the
+        open source Python/Typescript packages that aim to make it easy to develop
+        Language Model applications. Prior to starting LangChain, he led the ML team
+        at Robust Intelligence (an MLOps company focused on testing and validation
+        of machine learning models), led the","score":0.99967754,"raw_content":null},{"title":"Harrison
+        Chase - The AI Conference","url":"https://aiconference.PLACEHOLDER_FOR_SECRET_ID-chase/","content":"Harrison
+        Chase is the co-founder and CEO of LangChain, a company formed around the
+        open-source Python/Typescript packages that aim to make it easy to develop
+        Language Model applications. Prior to starting LangChain, he led the ML team
+        at Robust Intelligence (an MLOps company focused on testing and validation
+        of machine learning models), led the","score":0.9995908,"raw_content":null},{"title":"Harrison
+        Chase | TEDAI San Francisco","url":"https://tedai-sanfrancisco.ted.com/speakers-1/harrison-chase-/co-founder-and-ceo,-langchain/","content":"Harrison
+        Chase, a Harvard graduate in statistics and computer science, co-founded LangChain
+        to streamline the development of Language Model applications with open-source
+        Python/Typescript packages. Chase''s experience includes heading the Machine
+        Learning team at Robust Intelligence, focusing on the testing and validation
+        of machine learning models, and leading the entity linking team at Kensho","score":0.9994746,"raw_content":null},{"title":"Harrison
+        Chase, Author at TechCrunch","url":"https://techcrunch.com/author/harrison-chase/","content":"Harrison
+        Chase is the CEO and co-founder of LangChain, a company formed around the
+        open source Python/Typescript packages that aim to make it easy to develop
+        Language Model applications","score":0.9994185,"raw_content":null},{"title":"LangChain''s
+        Harrison Chase on Building the Orchestration Layer for AI ...","url":"https://www.sequoiacap.PLACEHOLDER_FOR_SECRET_ID-data-harrison-chase/","content":"Sonya
+        Huang: Hi, and welcome to training data. We have with us today Harrison Chase,
+        founder and CEO of LangChain. Harrison is a legend in the agent ecosystem,
+        as the product visionary who first connected LLMs with tools and actions.
+        And LangChain is the most popular agent building framework in the AI space.","score":0.99876,"raw_content":null},{"title":"Harrison
+        Chase, LangChain CEO - Interview - YouTube","url":"https://www.youtube.com/watch?v=7D8bw_4hTdo","content":"Join
+        us for an insightful interview with Harrison Chase, the CEO and co-founder
+        of Langchain, as he provides a comprehensive overview of Langchain''s innovati","score":0.99854493,"raw_content":null},{"title":"Harrison
+        Chase - Forbes","url":"https://www.forbes.PLACEHOLDER_FOR_SECRET_ID-chase/","content":"Harrison
+        Chase only cofounded LangChain in late 2022, but the company caught instant
+        attention for enabling anyone to build apps powered by large language models
+        like GPT-4 in as little as two","score":0.9977743,"raw_content":null},{"title":"LangChain
+        - Wikipedia","url":"https://en.wikipedia.org/wiki/LangChain","content":"In
+        October 2023 LangChain introduced LangServe, a deployment tool designed to
+        facilitate the transition from LCEL (LangChain Expression Language) prototypes
+        to production-ready applications.[5]\nIntegrations[edit]\nAs of March 2023,
+        LangChain included integrations with systems including Amazon, Google, and
+        Microsoft Azure cloud storage; API wrappers for news, movie information, and
+        weather; Bash for summarization, syntax and semantics checking, and execution
+        of shell scripts; multiple web scraping subsystems and templates; few-shot
+        learning prompt generation support; finding and summarizing \"todo\" tasks
+        in code; Google Drive documents, spreadsheets, and presentations summarization,
+        extraction, and creation; Google Search and Microsoft Bing web search; OpenAI,
+        Anthropic, and Hugging Face language models; iFixit repair guides and wikis
+        search and summarization; MapReduce for question answering, combining documents,
+        and question generation; N-gram overlap scoring; PyPDF, pdfminer, fitz, and
+        pymupdf for PDF file text extraction and manipulation; Python and JavaScript
+        code generation, analysis, and debugging; Milvus vector database[6] to store
+        and retrieve vector embeddings; Weaviate vector database[7] to cache embedding
+        and data objects; Redis cache database storage; Python RequestsWrapper and
+        other methods for API requests; SQL and NoSQL databases including JSON support;
+        Streamlit, including for logging; text mapping for k-nearest neighbors search;
+        time zone conversion and calendar operations; tracing and recording stack
+        symbols in threaded and asynchronous subprocess runs; and the Wolfram Alpha
+        website and SDK.[8] As a language model integration framework, LangChain''s
+        use-cases largely overlap with those of language models in general, including
+        document analysis and summarization, chatbots, and code analysis.[2]\nHistory[edit]\nLangChain
+        was launched in October 2022 as an open source project by Harrison Chase,
+        while working at machine learning startup Robust Intelligence. In April 2023,
+        LangChain had incorporated and the new startup raised over $20 million in
+        funding at a valuation of at least $200 million from venture firm Sequoia
+        Capital, a week after announcing a $10 million seed investment from Benchmark.[3][4]\n
+        The project quickly garnered popularity, with improvements from hundreds of
+        contributors on GitHub, trending discussions on Twitter, lively activity on
+        the project''s Discord server, many YouTube tutorials, and meetups in San
+        Francisco and London. As of April 2023, it can read from more than 50 document
+        types and data sources.[9]\nReferences[edit]\nExternal links[edit]","score":0.99694854,"raw_content":null},{"title":"Harrison
+        Chase - CEO of LangChain - Analytics India Magazine","url":"https://analyticsindiamag.com/people/harrison-chase/","content":"By
+        AIM The dynamic co-founder and CEO of LangChain, Harrison Chase is simplifying
+        the creation of applications powered by LLMs. With a background in statistics
+        and computer science from Harvard University, Chase has carved a niche in
+        the AI landscape. AIM Brand Solutions, a marketing division within AIM, specializes
+        in creating diverse content such as documentaries, public artworks, podcasts,
+        videos, articles, and more to effectively tell compelling stories. AIM Research
+        produces a series of annual reports on AI & Data Science covering every aspect
+        of the industry. Discover how Cypher 2024 expands to the USA, bridging AI
+        innovation gaps and tackling the challenges of enterprise AI adoption AIM
+        India AIM Research AIM Leaders Council 50 Best Data Science Firms","score":0.99491996,"raw_content":null},{"title":"Key
+        Insights from Harrison Chase''s Talk on Building Next-Level AI Agents","url":"https://www.turingpost.com/p/harrison-chase-langchain-ai-agents","content":"Harrison
+        Chase, founder of LangChain, shared insights on the evolution of AI agents
+        and their applications during Sequoia Capital''s AI Ascent. ... Saves you
+        a lot of research time, plus gives a flashback to ML history and insights
+        into the future. Stay ahead alongside over 73,000 professionals from top AI
+        labs, ML startups, and enterprises","score":0.9941801,"raw_content":null}],"response_time":2.54}'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '7474'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 13 Nov 2024 23:51:34 GMT
+      Server:
+      - nginx
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 1024, "messages": [{"role": "user", "content": "Who is the
+      founder of LangChain?"}, {"role": "assistant", "content": [{"text": "To answer
+      your question about the founder of LangChain, I''ll need to search for the most
+      up-to-date information. Let me do that for you.", "type": "text"}, {"type":
+      "tool_use", "name": "search", "input": {"query": "founder of LangChain"}, "id":
+      "toolu_PLACEHOLDER_FOR_SECRET_ID"}]}, {"role": "user", "content": [{"type": "tool_result",
+      "content": "[{\"url\": \"https://sfelc.PLACEHOLDER_FOR_SECRET_ID-chase\", \"content\":
+      \"Harrison Chase is the CEO and co-founder of LangChain, a company formed around
+      the open source Python/Typescript packages that aim to make it easy to develop
+      Language Model applications. Prior to starting LangChain, he led the ML team
+      at Robust Intelligence (an MLOps company focused on testing and validation of
+      machine learning models), led the\"}, {\"url\": \"https://aiconference.PLACEHOLDER_FOR_SECRET_ID-chase/\",
+      \"content\": \"Harrison Chase is the co-founder and CEO of LangChain, a company
+      formed around the open-source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications. Prior to starting LangChain, he
+      led the ML team at Robust Intelligence (an MLOps company focused on testing
+      and validation of machine learning models), led the\"}, {\"url\": \"https://tedai-sanfrancisco.ted.com/speakers-1/harrison-chase-/co-founder-and-ceo,-langchain/\",
+      \"content\": \"Harrison Chase, a Harvard graduate in statistics and computer
+      science, co-founded LangChain to streamline the development of Language Model
+      applications with open-source Python/Typescript packages. Chase''s experience
+      includes heading the Machine Learning team at Robust Intelligence, focusing
+      on the testing and validation of machine learning models, and leading the entity
+      linking team at Kensho\"}, {\"url\": \"https://techcrunch.com/author/harrison-chase/\",
+      \"content\": \"Harrison Chase is the CEO and co-founder of LangChain, a company
+      formed around the open source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications\"}, {\"url\": \"https://www.sequoiacap.PLACEHOLDER_FOR_SECRET_ID-data-harrison-chase/\",
+      \"content\": \"Sonya Huang: Hi, and welcome to training data. We have with us
+      today Harrison Chase, founder and CEO of LangChain. Harrison is a legend in
+      the agent ecosystem, as the product visionary who first connected LLMs with
+      tools and actions. And LangChain is the most popular agent building framework
+      in the AI space.\"}, {\"url\": \"https://www.youtube.com/watch?v=7D8bw_4hTdo\",
+      \"content\": \"Join us for an insightful interview with Harrison Chase, the
+      CEO and co-founder of Langchain, as he provides a comprehensive overview of
+      Langchain''s innovati\"}, {\"url\": \"https://www.forbes.PLACEHOLDER_FOR_SECRET_ID-chase/\",
+      \"content\": \"Harrison Chase only cofounded LangChain in late 2022, but the
+      company caught instant attention for enabling anyone to build apps powered by
+      large language models like GPT-4 in as little as two\"}, {\"url\": \"https://en.wikipedia.org/wiki/LangChain\",
+      \"content\": \"In October 2023 LangChain introduced LangServe, a deployment
+      tool designed to facilitate the transition from LCEL (LangChain Expression Language)
+      prototypes to production-ready applications.[5]\\nIntegrations[edit]\\nAs of
+      March 2023, LangChain included integrations with systems including Amazon, Google,
+      and Microsoft Azure cloud storage; API wrappers for news, movie information,
+      and weather; Bash for summarization, syntax and semantics checking, and execution
+      of shell scripts; multiple web scraping subsystems and templates; few-shot learning
+      prompt generation support; finding and summarizing \\\"todo\\\" tasks in code;
+      Google Drive documents, spreadsheets, and presentations summarization, extraction,
+      and creation; Google Search and Microsoft Bing web search; OpenAI, Anthropic,
+      and Hugging Face language models; iFixit repair guides and wikis search and
+      summarization; MapReduce for question answering, combining documents, and question
+      generation; N-gram overlap scoring; PyPDF, pdfminer, fitz, and pymupdf for PDF
+      file text extraction and manipulation; Python and JavaScript code generation,
+      analysis, and debugging; Milvus vector database[6] to store and retrieve vector
+      embeddings; Weaviate vector database[7] to cache embedding and data objects;
+      Redis cache database storage; Python RequestsWrapper and other methods for API
+      requests; SQL and NoSQL databases including JSON support; Streamlit, including
+      for logging; text mapping for k-nearest neighbors search; time zone conversion
+      and calendar operations; tracing and recording stack symbols in threaded and
+      asynchronous subprocess runs; and the Wolfram Alpha website and SDK.[8] As a
+      language model integration framework, LangChain''s use-cases largely overlap
+      with those of language models in general, including document analysis and summarization,
+      chatbots, and code analysis.[2]\\nHistory[edit]\\nLangChain was launched in
+      October 2022 as an open source project by Harrison Chase, while working at machine
+      learning startup Robust Intelligence. In April 2023, LangChain had incorporated
+      and the new startup raised over $20 million in funding at a valuation of at
+      least $200 million from venture firm Sequoia Capital, a week after announcing
+      a $10 million seed investment from Benchmark.[3][4]\\n The project quickly garnered
+      popularity, with improvements from hundreds of contributors on GitHub, trending
+      discussions on Twitter, lively activity on the project''s Discord server, many
+      YouTube tutorials, and meetups in San Francisco and London. As of April 2023,
+      it can read from more than 50 document types and data sources.[9]\\nReferences[edit]\\nExternal
+      links[edit]\"}, {\"url\": \"https://analyticsindiamag.com/people/harrison-chase/\",
+      \"content\": \"By AIM The dynamic co-founder and CEO of LangChain, Harrison
+      Chase is simplifying the creation of applications powered by LLMs. With a background
+      in statistics and computer science from Harvard University, Chase has carved
+      a niche in the AI landscape. AIM Brand Solutions, a marketing division within
+      AIM, specializes in creating diverse content such as documentaries, public artworks,
+      podcasts, videos, articles, and more to effectively tell compelling stories.
+      AIM Research produces a series of annual reports on AI & Data Science covering
+      every aspect of the industry. Discover how Cypher 2024 expands to the USA, bridging
+      AI innovation gaps and tackling the challenges of enterprise AI adoption AIM
+      India AIM Research AIM Leaders Council 50 Best Data Science Firms\"}, {\"url\":
+      \"https://www.turingpost.com/p/harrison-chase-langchain-ai-agents\", \"content\":
+      \"Harrison Chase, founder of LangChain, shared insights on the evolution of
+      AI agents and their applications during Sequoia Capital''s AI Ascent. ... Saves
+      you a lot of research time, plus gives a flashback to ML history and insights
+      into the future. Stay ahead alongside over 73,000 professionals from top AI
+      labs, ML startups, and enterprises\"}]", "tool_use_id": "toolu_PLACEHOLDER_FOR_SECRET_ID",
+      "is_error": false}]}], "model": "claude-3-5-sonnet-20240620", "system": "You
+      are a helpful AI assistant.\n\nSystem time: 2024-11-13T23:50:59.620569+00:00",
+      "tools": [{"name": "search", "description": "Search for general web results.
+      This function performs a search using the Tavily search engine, which is designed\nto
+      provide comprehensive, accurate, and trusted results. It''s particularly useful\nfor
+      answering questions about current events.", "input_schema": {"properties": {"query":
+      {"type": "string"}}, "required": ["query"], "type": "object"}}]}'
+    headers: {}
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 8e22abad2aef4caf-PHL
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 13 Nov 2024 23:51:40 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Robots-Tag:
+      - none
+      anthropic-ratelimit-requests-limit:
+      - '4000'
+      anthropic-ratelimit-requests-remaining:
+      - '3999'
+      anthropic-ratelimit-requests-reset:
+      - '2024-11-13T23:51:35Z'
+      anthropic-ratelimit-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '400000'
+      anthropic-ratelimit-tokens-reset:
+      - '2024-11-13T23:51:40Z'
+      request-id:
+      - req_PLACEHOLDER_FOR_SECRET_ID
+      via:
+      - 1.1 google
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 1024, "messages": [{"role": "user", "content": "Who is the
+      founder of LangChain?"}], "model": "claude-3-5-sonnet-20240620", "system": "You
+      are a helpful AI assistant.\n\nSystem time: 2024-11-13T23:51:11.433533+00:00",
+      "tools": [{"name": "search", "description": "Search for general web results.
+      This function performs a search using the Tavily search engine, which is designed\nto
+      provide comprehensive, accurate, and trusted results. It''s particularly useful\nfor
+      answering questions about current events.", "input_schema": {"properties": {"query":
+      {"type": "string"}}, "required": ["query"], "type": "object"}}]}'
+    headers: {}
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 8e22abf709c34cb4-PHL
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 13 Nov 2024 23:51:49 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Robots-Tag:
+      - none
+      anthropic-ratelimit-requests-limit:
+      - '4000'
+      anthropic-ratelimit-requests-remaining:
+      - '3999'
+      anthropic-ratelimit-requests-reset:
+      - '2024-11-13T23:51:47Z'
+      anthropic-ratelimit-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '400000'
+      anthropic-ratelimit-tokens-reset:
+      - '2024-11-13T23:51:49Z'
+      request-id:
+      - req_PLACEHOLDER_FOR_SECRET_ID
+      via:
+      - 1.1 google
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 1024, "messages": [{"role": "user", "content": "Who is the
+      founder of LangChain?"}, {"role": "assistant", "content": [{"text": "To answer
+      this question accurately, I''ll need to search for the most up-to-date information
+      about LangChain and its founder. Let me do that for you.", "type": "text"},
+      {"type": "tool_use", "name": "search", "input": {"query": "Who is the founder
+      of LangChain?"}, "id": "toolu_PLACEHOLDER_FOR_SECRET_ID"}]}, {"role": "user",
+      "content": [{"type": "tool_result", "content": "[{\"url\": \"https://sfelc.PLACEHOLDER_FOR_SECRET_ID-chase\",
+      \"content\": \"Harrison Chase is the CEO and co-founder of LangChain, a company
+      formed around the open source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications. Prior to starting LangChain, he
+      led the ML team at Robust Intelligence (an MLOps company focused on testing
+      and validation of machine learning models), led the\"}, {\"url\": \"https://aiconference.PLACEHOLDER_FOR_SECRET_ID-chase/\",
+      \"content\": \"Harrison Chase is the co-founder and CEO of LangChain, a company
+      formed around the open-source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications. Prior to starting LangChain, he
+      led the ML team at Robust Intelligence (an MLOps company focused on testing
+      and validation of machine learning models), led the\"}, {\"url\": \"https://tedai-sanfrancisco.ted.com/speakers-1/harrison-chase-/co-founder-and-ceo,-langchain/\",
+      \"content\": \"Harrison Chase, a Harvard graduate in statistics and computer
+      science, co-founded LangChain to streamline the development of Language Model
+      applications with open-source Python/Typescript packages. Chase''s experience
+      includes heading the Machine Learning team at Robust Intelligence, focusing
+      on the testing and validation of machine learning models, and leading the entity
+      linking team at Kensho\"}, {\"url\": \"https://techcrunch.com/author/harrison-chase/\",
+      \"content\": \"Harrison Chase is the CEO and co-founder of LangChain, a company
+      formed around the open source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications\"}, {\"url\": \"https://www.sequoiacap.PLACEHOLDER_FOR_SECRET_ID-data-harrison-chase/\",
+      \"content\": \"Sonya Huang: Hi, and welcome to training data. We have with us
+      today Harrison Chase, founder and CEO of LangChain. Harrison is a legend in
+      the agent ecosystem, as the product visionary who first connected LLMs with
+      tools and actions. And LangChain is the most popular agent building framework
+      in the AI space.\"}, {\"url\": \"https://www.youtube.com/watch?v=7D8bw_4hTdo\",
+      \"content\": \"Join us for an insightful interview with Harrison Chase, the
+      CEO and co-founder of Langchain, as he provides a comprehensive overview of
+      Langchain''s innovati\"}, {\"url\": \"https://www.forbes.PLACEHOLDER_FOR_SECRET_ID-chase/\",
+      \"content\": \"Harrison Chase only cofounded LangChain in late 2022, but the
+      company caught instant attention for enabling anyone to build apps powered by
+      large language models like GPT-4 in as little as two\"}, {\"url\": \"https://en.wikipedia.org/wiki/LangChain\",
+      \"content\": \"In October 2023 LangChain introduced LangServe, a deployment
+      tool designed to facilitate the transition from LCEL (LangChain Expression Language)
+      prototypes to production-ready applications.[5]\\nIntegrations[edit]\\nAs of
+      March 2023, LangChain included integrations with systems including Amazon, Google,
+      and Microsoft Azure cloud storage; API wrappers for news, movie information,
+      and weather; Bash for summarization, syntax and semantics checking, and execution
+      of shell scripts; multiple web scraping subsystems and templates; few-shot learning
+      prompt generation support; finding and summarizing \\\"todo\\\" tasks in code;
+      Google Drive documents, spreadsheets, and presentations summarization, extraction,
+      and creation; Google Search and Microsoft Bing web search; OpenAI, Anthropic,
+      and Hugging Face language models; iFixit repair guides and wikis search and
+      summarization; MapReduce for question answering, combining documents, and question
+      generation; N-gram overlap scoring; PyPDF, pdfminer, fitz, and pymupdf for PDF
+      file text extraction and manipulation; Python and JavaScript code generation,
+      analysis, and debugging; Milvus vector database[6] to store and retrieve vector
+      embeddings; Weaviate vector database[7] to cache embedding and data objects;
+      Redis cache database storage; Python RequestsWrapper and other methods for API
+      requests; SQL and NoSQL databases including JSON support; Streamlit, including
+      for logging; text mapping for k-nearest neighbors search; time zone conversion
+      and calendar operations; tracing and recording stack symbols in threaded and
+      asynchronous subprocess runs; and the Wolfram Alpha website and SDK.[8] As a
+      language model integration framework, LangChain''s use-cases largely overlap
+      with those of language models in general, including document analysis and summarization,
+      chatbots, and code analysis.[2]\\nHistory[edit]\\nLangChain was launched in
+      October 2022 as an open source project by Harrison Chase, while working at machine
+      learning startup Robust Intelligence. In April 2023, LangChain had incorporated
+      and the new startup raised over $20 million in funding at a valuation of at
+      least $200 million from venture firm Sequoia Capital, a week after announcing
+      a $10 million seed investment from Benchmark.[3][4]\\n The project quickly garnered
+      popularity, with improvements from hundreds of contributors on GitHub, trending
+      discussions on Twitter, lively activity on the project''s Discord server, many
+      YouTube tutorials, and meetups in San Francisco and London. As of April 2023,
+      it can read from more than 50 document types and data sources.[9]\\nReferences[edit]\\nExternal
+      links[edit]\"}, {\"url\": \"https://analyticsindiamag.com/people/harrison-chase/\",
+      \"content\": \"By AIM The dynamic co-founder and CEO of LangChain, Harrison
+      Chase is simplifying the creation of applications powered by LLMs. With a background
+      in statistics and computer science from Harvard University, Chase has carved
+      a niche in the AI landscape. AIM Brand Solutions, a marketing division within
+      AIM, specializes in creating diverse content such as documentaries, public artworks,
+      podcasts, videos, articles, and more to effectively tell compelling stories.
+      AIM Research produces a series of annual reports on AI & Data Science covering
+      every aspect of the industry. Discover how Cypher 2024 expands to the USA, bridging
+      AI innovation gaps and tackling the challenges of enterprise AI adoption AIM
+      India AIM Research AIM Leaders Council 50 Best Data Science Firms\"}, {\"url\":
+      \"https://www.turingpost.com/p/harrison-chase-langchain-ai-agents\", \"content\":
+      \"Harrison Chase, founder of LangChain, shared insights on the evolution of
+      AI agents and their applications during Sequoia Capital''s AI Ascent. ... Saves
+      you a lot of research time, plus gives a flashback to ML history and insights
+      into the future. Stay ahead alongside over 73,000 professionals from top AI
+      labs, ML startups, and enterprises\"}]", "tool_use_id": "toolu_PLACEHOLDER_FOR_SECRET_ID",
+      "is_error": false}]}], "model": "claude-3-5-sonnet-20240620", "system": "You
+      are a helpful AI assistant.\n\nSystem time: 2024-11-13T23:51:14.324904+00:00",
+      "tools": [{"name": "search", "description": "Search for general web results.
+      This function performs a search using the Tavily search engine, which is designed\nto
+      provide comprehensive, accurate, and trusted results. It''s particularly useful\nfor
+      answering questions about current events.", "input_schema": {"properties": {"query":
+      {"type": "string"}}, "required": ["query"], "type": "object"}}]}'
+    headers: {}
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 8e22ac0918734cb2-PHL
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 13 Nov 2024 23:51:56 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Robots-Tag:
+      - none
+      anthropic-ratelimit-requests-limit:
+      - '4000'
+      anthropic-ratelimit-requests-remaining:
+      - '3999'
+      anthropic-ratelimit-requests-reset:
+      - '2024-11-13T23:51:49Z'
+      anthropic-ratelimit-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '400000'
+      anthropic-ratelimit-tokens-reset:
+      - '2024-11-13T23:51:56Z'
+      request-id:
+      - req_PLACEHOLDER_FOR_SECRET_ID
+      via:
+      - 1.1 google
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 1024, "messages": [{"role": "user", "content": "Who is the
+      founder of LangChain?"}], "model": "claude-3-5-sonnet-20240620", "system": "You
+      are a helpful AI assistant.\n\nSystem time: 2024-11-13T23:51:55.561440+00:00",
+      "tools": [{"name": "search", "description": "Search for general web results.
+      This function performs a search using the Tavily search engine, which is designed\nto
+      provide comprehensive, accurate, and trusted results. It''s particularly useful\nfor
+      answering questions about current events.", "input_schema": {"properties": {"query":
+      {"type": "string"}}, "required": ["query"], "type": "object"}}]}'
+    headers: {}
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 8e22ad0acd1032b3-PHL
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 13 Nov 2024 23:52:33 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Robots-Tag:
+      - none
+      anthropic-ratelimit-requests-limit:
+      - '4000'
+      anthropic-ratelimit-requests-remaining:
+      - '3999'
+      anthropic-ratelimit-requests-reset:
+      - '2024-11-13T23:52:31Z'
+      anthropic-ratelimit-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '400000'
+      anthropic-ratelimit-tokens-reset:
+      - '2024-11-13T23:52:33Z'
+      request-id:
+      - req_PLACEHOLDER_FOR_SECRET_ID
+      via:
+      - 1.1 google
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 1024, "messages": [{"role": "user", "content": "Who is the
+      founder of LangChain?"}, {"role": "assistant", "content": [{"text": "To answer
+      this question accurately, I''ll need to search for the most up-to-date information
+      about LangChain and its founder. Let me do that for you.", "type": "text"},
+      {"type": "tool_use", "name": "search", "input": {"query": "founder of LangChain"},
+      "id": "toolu_PLACEHOLDER_FOR_SECRET_ID"}]}, {"role": "user", "content": [{"type":
+      "tool_result", "content": "[{\"url\": \"https://sfelc.PLACEHOLDER_FOR_SECRET_ID-chase\",
+      \"content\": \"Harrison Chase is the CEO and co-founder of LangChain, a company
+      formed around the open source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications. Prior to starting LangChain, he
+      led the ML team at Robust Intelligence (an MLOps company focused on testing
+      and validation of machine learning models), led the\"}, {\"url\": \"https://aiconference.PLACEHOLDER_FOR_SECRET_ID-chase/\",
+      \"content\": \"Harrison Chase is the co-founder and CEO of LangChain, a company
+      formed around the open-source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications. Prior to starting LangChain, he
+      led the ML team at Robust Intelligence (an MLOps company focused on testing
+      and validation of machine learning models), led the\"}, {\"url\": \"https://tedai-sanfrancisco.ted.com/speakers-1/harrison-chase-/co-founder-and-ceo,-langchain/\",
+      \"content\": \"Harrison Chase, a Harvard graduate in statistics and computer
+      science, co-founded LangChain to streamline the development of Language Model
+      applications with open-source Python/Typescript packages. Chase''s experience
+      includes heading the Machine Learning team at Robust Intelligence, focusing
+      on the testing and validation of machine learning models, and leading the entity
+      linking team at Kensho\"}, {\"url\": \"https://techcrunch.com/author/harrison-chase/\",
+      \"content\": \"Harrison Chase is the CEO and co-founder of LangChain, a company
+      formed around the open source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications\"}, {\"url\": \"https://www.sequoiacap.PLACEHOLDER_FOR_SECRET_ID-data-harrison-chase/\",
+      \"content\": \"Sonya Huang: Hi, and welcome to training data. We have with us
+      today Harrison Chase, founder and CEO of LangChain. Harrison is a legend in
+      the agent ecosystem, as the product visionary who first connected LLMs with
+      tools and actions. And LangChain is the most popular agent building framework
+      in the AI space.\"}, {\"url\": \"https://www.youtube.com/watch?v=7D8bw_4hTdo\",
+      \"content\": \"Join us for an insightful interview with Harrison Chase, the
+      CEO and co-founder of Langchain, as he provides a comprehensive overview of
+      Langchain''s innovati\"}, {\"url\": \"https://www.forbes.PLACEHOLDER_FOR_SECRET_ID-chase/\",
+      \"content\": \"Harrison Chase only cofounded LangChain in late 2022, but the
+      company caught instant attention for enabling anyone to build apps powered by
+      large language models like GPT-4 in as little as two\"}, {\"url\": \"https://en.wikipedia.org/wiki/LangChain\",
+      \"content\": \"In October 2023 LangChain introduced LangServe, a deployment
+      tool designed to facilitate the transition from LCEL (LangChain Expression Language)
+      prototypes to production-ready applications.[5]\\nIntegrations[edit]\\nAs of
+      March 2023, LangChain included integrations with systems including Amazon, Google,
+      and Microsoft Azure cloud storage; API wrappers for news, movie information,
+      and weather; Bash for summarization, syntax and semantics checking, and execution
+      of shell scripts; multiple web scraping subsystems and templates; few-shot learning
+      prompt generation support; finding and summarizing \\\"todo\\\" tasks in code;
+      Google Drive documents, spreadsheets, and presentations summarization, extraction,
+      and creation; Google Search and Microsoft Bing web search; OpenAI, Anthropic,
+      and Hugging Face language models; iFixit repair guides and wikis search and
+      summarization; MapReduce for question answering, combining documents, and question
+      generation; N-gram overlap scoring; PyPDF, pdfminer, fitz, and pymupdf for PDF
+      file text extraction and manipulation; Python and JavaScript code generation,
+      analysis, and debugging; Milvus vector database[6] to store and retrieve vector
+      embeddings; Weaviate vector database[7] to cache embedding and data objects;
+      Redis cache database storage; Python RequestsWrapper and other methods for API
+      requests; SQL and NoSQL databases including JSON support; Streamlit, including
+      for logging; text mapping for k-nearest neighbors search; time zone conversion
+      and calendar operations; tracing and recording stack symbols in threaded and
+      asynchronous subprocess runs; and the Wolfram Alpha website and SDK.[8] As a
+      language model integration framework, LangChain''s use-cases largely overlap
+      with those of language models in general, including document analysis and summarization,
+      chatbots, and code analysis.[2]\\nHistory[edit]\\nLangChain was launched in
+      October 2022 as an open source project by Harrison Chase, while working at machine
+      learning startup Robust Intelligence. In April 2023, LangChain had incorporated
+      and the new startup raised over $20 million in funding at a valuation of at
+      least $200 million from venture firm Sequoia Capital, a week after announcing
+      a $10 million seed investment from Benchmark.[3][4]\\n The project quickly garnered
+      popularity, with improvements from hundreds of contributors on GitHub, trending
+      discussions on Twitter, lively activity on the project''s Discord server, many
+      YouTube tutorials, and meetups in San Francisco and London. As of April 2023,
+      it can read from more than 50 document types and data sources.[9]\\nReferences[edit]\\nExternal
+      links[edit]\"}, {\"url\": \"https://analyticsindiamag.com/people/harrison-chase/\",
+      \"content\": \"By AIM The dynamic co-founder and CEO of LangChain, Harrison
+      Chase is simplifying the creation of applications powered by LLMs. With a background
+      in statistics and computer science from Harvard University, Chase has carved
+      a niche in the AI landscape. AIM Brand Solutions, a marketing division within
+      AIM, specializes in creating diverse content such as documentaries, public artworks,
+      podcasts, videos, articles, and more to effectively tell compelling stories.
+      AIM Research produces a series of annual reports on AI & Data Science covering
+      every aspect of the industry. Discover how Cypher 2024 expands to the USA, bridging
+      AI innovation gaps and tackling the challenges of enterprise AI adoption AIM
+      India AIM Research AIM Leaders Council 50 Best Data Science Firms\"}, {\"url\":
+      \"https://www.turingpost.com/p/harrison-chase-langchain-ai-agents\", \"content\":
+      \"Harrison Chase, founder of LangChain, shared insights on the evolution of
+      AI agents and their applications during Sequoia Capital''s AI Ascent. ... Saves
+      you a lot of research time, plus gives a flashback to ML history and insights
+      into the future. Stay ahead alongside over 73,000 professionals from top AI
+      labs, ML startups, and enterprises\"}]", "tool_use_id": "toolu_PLACEHOLDER_FOR_SECRET_ID",
+      "is_error": false}]}], "model": "claude-3-5-sonnet-20240620", "system": "You
+      are a helpful AI assistant.\n\nSystem time: 2024-11-13T23:51:58.213993+00:00",
+      "tools": [{"name": "search", "description": "Search for general web results.
+      This function performs a search using the Tavily search engine, which is designed\nto
+      provide comprehensive, accurate, and trusted results. It''s particularly useful\nfor
+      answering questions about current events.", "input_schema": {"properties": {"query":
+      {"type": "string"}}, "required": ["query"], "type": "object"}}]}'
+    headers: {}
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 8e22ad1b7c4d4cb1-PHL
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 13 Nov 2024 23:52:39 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Robots-Tag:
+      - none
+      anthropic-ratelimit-requests-limit:
+      - '4000'
+      anthropic-ratelimit-requests-remaining:
+      - '3999'
+      anthropic-ratelimit-requests-reset:
+      - '2024-11-13T23:52:33Z'
+      anthropic-ratelimit-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '400000'
+      anthropic-ratelimit-tokens-reset:
+      - '2024-11-13T23:52:39Z'
+      request-id:
+      - req_PLACEHOLDER_FOR_SECRET_ID
+      via:
+      - 1.1 google
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 1024, "messages": [{"role": "user", "content": "Who is the
+      founder of LangChain?"}], "model": "claude-3-5-sonnet-20240620", "system": "You
+      are a helpful AI assistant.\n\nSystem time: 2024-11-13T23:52:42.318107+00:00",
+      "tools": [{"name": "search", "description": "Search for general web results.
+      This function performs a search using the Tavily search engine, which is designed\nto
+      provide comprehensive, accurate, and trusted results. It''s particularly useful\nfor
+      answering questions about current events.", "input_schema": {"properties": {"query":
+      {"type": "string"}}, "required": ["query"], "type": "object"}}]}'
+    headers: {}
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 8e22ae2f5dec4cb6-PHL
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 13 Nov 2024 23:53:20 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Robots-Tag:
+      - none
+      anthropic-ratelimit-requests-limit:
+      - '4000'
+      anthropic-ratelimit-requests-remaining:
+      - '3999'
+      anthropic-ratelimit-requests-reset:
+      - '2024-11-13T23:53:18Z'
+      anthropic-ratelimit-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '400000'
+      anthropic-ratelimit-tokens-reset:
+      - '2024-11-13T23:53:20Z'
+      request-id:
+      - req_PLACEHOLDER_FOR_SECRET_ID
+      via:
+      - 1.1 google
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 1024, "messages": [{"role": "user", "content": "Who is the
+      founder of LangChain?"}, {"role": "assistant", "content": [{"text": "To answer
+      this question accurately, I''ll need to search for the most up-to-date information
+      about LangChain and its founder. Let me do that for you.", "type": "text"},
+      {"type": "tool_use", "name": "search", "input": {"query": "Who is the founder
+      of LangChain?"}, "id": "toolu_PLACEHOLDER_FOR_SECRET_ID"}]}, {"role": "user",
+      "content": [{"type": "tool_result", "content": "[{\"url\": \"https://sfelc.PLACEHOLDER_FOR_SECRET_ID-chase\",
+      \"content\": \"Harrison Chase is the CEO and co-founder of LangChain, a company
+      formed around the open source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications. Prior to starting LangChain, he
+      led the ML team at Robust Intelligence (an MLOps company focused on testing
+      and validation of machine learning models), led the\"}, {\"url\": \"https://aiconference.PLACEHOLDER_FOR_SECRET_ID-chase/\",
+      \"content\": \"Harrison Chase is the co-founder and CEO of LangChain, a company
+      formed around the open-source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications. Prior to starting LangChain, he
+      led the ML team at Robust Intelligence (an MLOps company focused on testing
+      and validation of machine learning models), led the\"}, {\"url\": \"https://tedai-sanfrancisco.ted.com/speakers-1/harrison-chase-/co-founder-and-ceo,-langchain/\",
+      \"content\": \"Harrison Chase, a Harvard graduate in statistics and computer
+      science, co-founded LangChain to streamline the development of Language Model
+      applications with open-source Python/Typescript packages. Chase''s experience
+      includes heading the Machine Learning team at Robust Intelligence, focusing
+      on the testing and validation of machine learning models, and leading the entity
+      linking team at Kensho\"}, {\"url\": \"https://techcrunch.com/author/harrison-chase/\",
+      \"content\": \"Harrison Chase is the CEO and co-founder of LangChain, a company
+      formed around the open source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications\"}, {\"url\": \"https://www.sequoiacap.PLACEHOLDER_FOR_SECRET_ID-data-harrison-chase/\",
+      \"content\": \"Sonya Huang: Hi, and welcome to training data. We have with us
+      today Harrison Chase, founder and CEO of LangChain. Harrison is a legend in
+      the agent ecosystem, as the product visionary who first connected LLMs with
+      tools and actions. And LangChain is the most popular agent building framework
+      in the AI space.\"}, {\"url\": \"https://www.youtube.com/watch?v=7D8bw_4hTdo\",
+      \"content\": \"Join us for an insightful interview with Harrison Chase, the
+      CEO and co-founder of Langchain, as he provides a comprehensive overview of
+      Langchain''s innovati\"}, {\"url\": \"https://www.forbes.PLACEHOLDER_FOR_SECRET_ID-chase/\",
+      \"content\": \"Harrison Chase only cofounded LangChain in late 2022, but the
+      company caught instant attention for enabling anyone to build apps powered by
+      large language models like GPT-4 in as little as two\"}, {\"url\": \"https://en.wikipedia.org/wiki/LangChain\",
+      \"content\": \"In October 2023 LangChain introduced LangServe, a deployment
+      tool designed to facilitate the transition from LCEL (LangChain Expression Language)
+      prototypes to production-ready applications.[5]\\nIntegrations[edit]\\nAs of
+      March 2023, LangChain included integrations with systems including Amazon, Google,
+      and Microsoft Azure cloud storage; API wrappers for news, movie information,
+      and weather; Bash for summarization, syntax and semantics checking, and execution
+      of shell scripts; multiple web scraping subsystems and templates; few-shot learning
+      prompt generation support; finding and summarizing \\\"todo\\\" tasks in code;
+      Google Drive documents, spreadsheets, and presentations summarization, extraction,
+      and creation; Google Search and Microsoft Bing web search; OpenAI, Anthropic,
+      and Hugging Face language models; iFixit repair guides and wikis search and
+      summarization; MapReduce for question answering, combining documents, and question
+      generation; N-gram overlap scoring; PyPDF, pdfminer, fitz, and pymupdf for PDF
+      file text extraction and manipulation; Python and JavaScript code generation,
+      analysis, and debugging; Milvus vector database[6] to store and retrieve vector
+      embeddings; Weaviate vector database[7] to cache embedding and data objects;
+      Redis cache database storage; Python RequestsWrapper and other methods for API
+      requests; SQL and NoSQL databases including JSON support; Streamlit, including
+      for logging; text mapping for k-nearest neighbors search; time zone conversion
+      and calendar operations; tracing and recording stack symbols in threaded and
+      asynchronous subprocess runs; and the Wolfram Alpha website and SDK.[8] As a
+      language model integration framework, LangChain''s use-cases largely overlap
+      with those of language models in general, including document analysis and summarization,
+      chatbots, and code analysis.[2]\\nHistory[edit]\\nLangChain was launched in
+      October 2022 as an open source project by Harrison Chase, while working at machine
+      learning startup Robust Intelligence. In April 2023, LangChain had incorporated
+      and the new startup raised over $20 million in funding at a valuation of at
+      least $200 million from venture firm Sequoia Capital, a week after announcing
+      a $10 million seed investment from Benchmark.[3][4]\\n The project quickly garnered
+      popularity, with improvements from hundreds of contributors on GitHub, trending
+      discussions on Twitter, lively activity on the project''s Discord server, many
+      YouTube tutorials, and meetups in San Francisco and London. As of April 2023,
+      it can read from more than 50 document types and data sources.[9]\\nReferences[edit]\\nExternal
+      links[edit]\"}, {\"url\": \"https://analyticsindiamag.com/people/harrison-chase/\",
+      \"content\": \"By AIM The dynamic co-founder and CEO of LangChain, Harrison
+      Chase is simplifying the creation of applications powered by LLMs. With a background
+      in statistics and computer science from Harvard University, Chase has carved
+      a niche in the AI landscape. AIM Brand Solutions, a marketing division within
+      AIM, specializes in creating diverse content such as documentaries, public artworks,
+      podcasts, videos, articles, and more to effectively tell compelling stories.
+      AIM Research produces a series of annual reports on AI & Data Science covering
+      every aspect of the industry. Discover how Cypher 2024 expands to the USA, bridging
+      AI innovation gaps and tackling the challenges of enterprise AI adoption AIM
+      India AIM Research AIM Leaders Council 50 Best Data Science Firms\"}, {\"url\":
+      \"https://www.turingpost.com/p/harrison-chase-langchain-ai-agents\", \"content\":
+      \"Harrison Chase, founder of LangChain, shared insights on the evolution of
+      AI agents and their applications during Sequoia Capital''s AI Ascent. ... Saves
+      you a lot of research time, plus gives a flashback to ML history and insights
+      into the future. Stay ahead alongside over 73,000 professionals from top AI
+      labs, ML startups, and enterprises\"}]", "tool_use_id": "toolu_PLACEHOLDER_FOR_SECRET_ID",
+      "is_error": false}]}], "model": "claude-3-5-sonnet-20240620", "system": "You
+      are a helpful AI assistant.\n\nSystem time: 2024-11-13T23:52:45.186170+00:00",
+      "tools": [{"name": "search", "description": "Search for general web results.
+      This function performs a search using the Tavily search engine, which is designed\nto
+      provide comprehensive, accurate, and trusted results. It''s particularly useful\nfor
+      answering questions about current events.", "input_schema": {"properties": {"query":
+      {"type": "string"}}, "required": ["query"], "type": "object"}}]}'
+    headers: {}
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 8e22ae419e4532cc-PHL
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 13 Nov 2024 23:53:26 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Robots-Tag:
+      - none
+      anthropic-ratelimit-requests-limit:
+      - '4000'
+      anthropic-ratelimit-requests-remaining:
+      - '3999'
+      anthropic-ratelimit-requests-reset:
+      - '2024-11-13T23:53:20Z'
+      anthropic-ratelimit-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '400000'
+      anthropic-ratelimit-tokens-reset:
+      - '2024-11-13T23:53:26Z'
+      request-id:
+      - req_PLACEHOLDER_FOR_SECRET_ID
+      via:
+      - 1.1 google
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 1024, "messages": [{"role": "user", "content": "Who is the
+      founder of LangChain?"}], "model": "claude-3-5-sonnet-20240620", "system": "You
+      are a helpful AI assistant.\n\nSystem time: 2024-11-13T23:53:11.070630+00:00",
+      "tools": [{"name": "search", "description": "Search for general web results.
+      This function performs a search using the Tavily search engine, which is designed\nto
+      provide comprehensive, accurate, and trusted results. It''s particularly useful\nfor
+      answering questions about current events.", "input_schema": {"properties": {"query":
+      {"type": "string"}}, "required": ["query"], "type": "object"}}]}'
+    headers: {}
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 8e22aee2bec36992-PHL
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 13 Nov 2024 23:53:48 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Robots-Tag:
+      - none
+      anthropic-ratelimit-requests-limit:
+      - '4000'
+      anthropic-ratelimit-requests-remaining:
+      - '3999'
+      anthropic-ratelimit-requests-reset:
+      - '2024-11-13T23:53:46Z'
+      anthropic-ratelimit-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '400000'
+      anthropic-ratelimit-tokens-reset:
+      - '2024-11-13T23:53:48Z'
+      request-id:
+      - req_PLACEHOLDER_FOR_SECRET_ID
+      via:
+      - 1.1 google
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 1024, "messages": [{"role": "user", "content": "Who is the
+      founder of LangChain?"}, {"role": "assistant", "content": [{"text": "To answer
+      this question accurately, I''ll need to search for the most up-to-date information
+      about LangChain and its founder. Let me do that for you.", "type": "text"},
+      {"type": "tool_use", "name": "search", "input": {"query": "Who is the founder
+      of LangChain?"}, "id": "toolu_PLACEHOLDER_FOR_SECRET_ID"}]}, {"role": "user",
+      "content": [{"type": "tool_result", "content": "[{\"url\": \"https://sfelc.PLACEHOLDER_FOR_SECRET_ID-chase\",
+      \"content\": \"Harrison Chase is the CEO and co-founder of LangChain, a company
+      formed around the open source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications. Prior to starting LangChain, he
+      led the ML team at Robust Intelligence (an MLOps company focused on testing
+      and validation of machine learning models), led the\"}, {\"url\": \"https://aiconference.PLACEHOLDER_FOR_SECRET_ID-chase/\",
+      \"content\": \"Harrison Chase is the co-founder and CEO of LangChain, a company
+      formed around the open-source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications. Prior to starting LangChain, he
+      led the ML team at Robust Intelligence (an MLOps company focused on testing
+      and validation of machine learning models), led the\"}, {\"url\": \"https://tedai-sanfrancisco.ted.com/speakers-1/harrison-chase-/co-founder-and-ceo,-langchain/\",
+      \"content\": \"Harrison Chase, a Harvard graduate in statistics and computer
+      science, co-founded LangChain to streamline the development of Language Model
+      applications with open-source Python/Typescript packages. Chase''s experience
+      includes heading the Machine Learning team at Robust Intelligence, focusing
+      on the testing and validation of machine learning models, and leading the entity
+      linking team at Kensho\"}, {\"url\": \"https://techcrunch.com/author/harrison-chase/\",
+      \"content\": \"Harrison Chase is the CEO and co-founder of LangChain, a company
+      formed around the open source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications\"}, {\"url\": \"https://www.sequoiacap.PLACEHOLDER_FOR_SECRET_ID-data-harrison-chase/\",
+      \"content\": \"Sonya Huang: Hi, and welcome to training data. We have with us
+      today Harrison Chase, founder and CEO of LangChain. Harrison is a legend in
+      the agent ecosystem, as the product visionary who first connected LLMs with
+      tools and actions. And LangChain is the most popular agent building framework
+      in the AI space.\"}, {\"url\": \"https://www.youtube.com/watch?v=7D8bw_4hTdo\",
+      \"content\": \"Join us for an insightful interview with Harrison Chase, the
+      CEO and co-founder of Langchain, as he provides a comprehensive overview of
+      Langchain''s innovati\"}, {\"url\": \"https://www.forbes.PLACEHOLDER_FOR_SECRET_ID-chase/\",
+      \"content\": \"Harrison Chase only cofounded LangChain in late 2022, but the
+      company caught instant attention for enabling anyone to build apps powered by
+      large language models like GPT-4 in as little as two\"}, {\"url\": \"https://en.wikipedia.org/wiki/LangChain\",
+      \"content\": \"In October 2023 LangChain introduced LangServe, a deployment
+      tool designed to facilitate the transition from LCEL (LangChain Expression Language)
+      prototypes to production-ready applications.[5]\\nIntegrations[edit]\\nAs of
+      March 2023, LangChain included integrations with systems including Amazon, Google,
+      and Microsoft Azure cloud storage; API wrappers for news, movie information,
+      and weather; Bash for summarization, syntax and semantics checking, and execution
+      of shell scripts; multiple web scraping subsystems and templates; few-shot learning
+      prompt generation support; finding and summarizing \\\"todo\\\" tasks in code;
+      Google Drive documents, spreadsheets, and presentations summarization, extraction,
+      and creation; Google Search and Microsoft Bing web search; OpenAI, Anthropic,
+      and Hugging Face language models; iFixit repair guides and wikis search and
+      summarization; MapReduce for question answering, combining documents, and question
+      generation; N-gram overlap scoring; PyPDF, pdfminer, fitz, and pymupdf for PDF
+      file text extraction and manipulation; Python and JavaScript code generation,
+      analysis, and debugging; Milvus vector database[6] to store and retrieve vector
+      embeddings; Weaviate vector database[7] to cache embedding and data objects;
+      Redis cache database storage; Python RequestsWrapper and other methods for API
+      requests; SQL and NoSQL databases including JSON support; Streamlit, including
+      for logging; text mapping for k-nearest neighbors search; time zone conversion
+      and calendar operations; tracing and recording stack symbols in threaded and
+      asynchronous subprocess runs; and the Wolfram Alpha website and SDK.[8] As a
+      language model integration framework, LangChain''s use-cases largely overlap
+      with those of language models in general, including document analysis and summarization,
+      chatbots, and code analysis.[2]\\nHistory[edit]\\nLangChain was launched in
+      October 2022 as an open source project by Harrison Chase, while working at machine
+      learning startup Robust Intelligence. In April 2023, LangChain had incorporated
+      and the new startup raised over $20 million in funding at a valuation of at
+      least $200 million from venture firm Sequoia Capital, a week after announcing
+      a $10 million seed investment from Benchmark.[3][4]\\n The project quickly garnered
+      popularity, with improvements from hundreds of contributors on GitHub, trending
+      discussions on Twitter, lively activity on the project''s Discord server, many
+      YouTube tutorials, and meetups in San Francisco and London. As of April 2023,
+      it can read from more than 50 document types and data sources.[9]\\nReferences[edit]\\nExternal
+      links[edit]\"}, {\"url\": \"https://analyticsindiamag.com/people/harrison-chase/\",
+      \"content\": \"By AIM The dynamic co-founder and CEO of LangChain, Harrison
+      Chase is simplifying the creation of applications powered by LLMs. With a background
+      in statistics and computer science from Harvard University, Chase has carved
+      a niche in the AI landscape. AIM Brand Solutions, a marketing division within
+      AIM, specializes in creating diverse content such as documentaries, public artworks,
+      podcasts, videos, articles, and more to effectively tell compelling stories.
+      AIM Research produces a series of annual reports on AI & Data Science covering
+      every aspect of the industry. Discover how Cypher 2024 expands to the USA, bridging
+      AI innovation gaps and tackling the challenges of enterprise AI adoption AIM
+      India AIM Research AIM Leaders Council 50 Best Data Science Firms\"}, {\"url\":
+      \"https://www.turingpost.com/p/harrison-chase-langchain-ai-agents\", \"content\":
+      \"Harrison Chase, founder of LangChain, shared insights on the evolution of
+      AI agents and their applications during Sequoia Capital''s AI Ascent. ... Saves
+      you a lot of research time, plus gives a flashback to ML history and insights
+      into the future. Stay ahead alongside over 73,000 professionals from top AI
+      labs, ML startups, and enterprises\"}]", "tool_use_id": "toolu_PLACEHOLDER_FOR_SECRET_ID",
+      "is_error": false}]}], "model": "claude-3-5-sonnet-20240620", "system": "You
+      are a helpful AI assistant.\n\nSystem time: 2024-11-13T23:53:13.741829+00:00",
+      "tools": [{"name": "search", "description": "Search for general web results.
+      This function performs a search using the Tavily search engine, which is designed\nto
+      provide comprehensive, accurate, and trusted results. It''s particularly useful\nfor
+      answering questions about current events.", "input_schema": {"properties": {"query":
+      {"type": "string"}}, "required": ["query"], "type": "object"}}]}'
+    headers: {}
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 8e22aef3a88e32c6-PHL
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 13 Nov 2024 23:53:54 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Robots-Tag:
+      - none
+      anthropic-ratelimit-requests-limit:
+      - '4000'
+      anthropic-ratelimit-requests-remaining:
+      - '3999'
+      anthropic-ratelimit-requests-reset:
+      - '2024-11-13T23:53:49Z'
+      anthropic-ratelimit-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '400000'
+      anthropic-ratelimit-tokens-reset:
+      - '2024-11-13T23:53:54Z'
+      request-id:
+      - req_PLACEHOLDER_FOR_SECRET_ID
+      via:
+      - 1.1 google
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 1024, "messages": [{"role": "user", "content": "Who is the
+      founder of LangChain?"}], "model": "claude-3-5-sonnet-20240620", "system": "You
+      are a helpful AI assistant.\n\nSystem time: 2024-11-13T23:54:04.768568+00:00",
+      "tools": [{"name": "search", "description": "Search for general web results.
+      This function performs a search using the Tavily search engine, which is designed\nto
+      provide comprehensive, accurate, and trusted results. It''s particularly useful\nfor
+      answering questions about current events.", "input_schema": {"properties": {"query":
+      {"type": "string"}}, "required": ["query"], "type": "object"}}]}'
+    headers: {}
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 8e22b0325b034cb6-PHL
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 13 Nov 2024 23:54:42 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Robots-Tag:
+      - none
+      anthropic-ratelimit-requests-limit:
+      - '4000'
+      anthropic-ratelimit-requests-remaining:
+      - '3999'
+      anthropic-ratelimit-requests-reset:
+      - '2024-11-13T23:54:40Z'
+      anthropic-ratelimit-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '400000'
+      anthropic-ratelimit-tokens-reset:
+      - '2024-11-13T23:54:42Z'
+      request-id:
+      - req_PLACEHOLDER_FOR_SECRET_ID
+      via:
+      - 1.1 google
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 1024, "messages": [{"role": "user", "content": "Who is the
+      founder of LangChain?"}, {"role": "assistant", "content": [{"text": "To answer
+      this question accurately, I''ll need to search for the most up-to-date information
+      about LangChain and its founder. Let me do that for you.", "type": "text"},
+      {"type": "tool_use", "name": "search", "input": {"query": "founder of LangChain"},
+      "id": "toolu_PLACEHOLDER_FOR_SECRET_ID"}]}, {"role": "user", "content": [{"type":
+      "tool_result", "content": "[{\"url\": \"https://sfelc.PLACEHOLDER_FOR_SECRET_ID-chase\",
+      \"content\": \"Harrison Chase is the CEO and co-founder of LangChain, a company
+      formed around the open source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications. Prior to starting LangChain, he
+      led the ML team at Robust Intelligence (an MLOps company focused on testing
+      and validation of machine learning models), led the\"}, {\"url\": \"https://aiconference.PLACEHOLDER_FOR_SECRET_ID-chase/\",
+      \"content\": \"Harrison Chase is the co-founder and CEO of LangChain, a company
+      formed around the open-source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications. Prior to starting LangChain, he
+      led the ML team at Robust Intelligence (an MLOps company focused on testing
+      and validation of machine learning models), led the\"}, {\"url\": \"https://tedai-sanfrancisco.ted.com/speakers-1/harrison-chase-/co-founder-and-ceo,-langchain/\",
+      \"content\": \"Harrison Chase, a Harvard graduate in statistics and computer
+      science, co-founded LangChain to streamline the development of Language Model
+      applications with open-source Python/Typescript packages. Chase''s experience
+      includes heading the Machine Learning team at Robust Intelligence, focusing
+      on the testing and validation of machine learning models, and leading the entity
+      linking team at Kensho\"}, {\"url\": \"https://techcrunch.com/author/harrison-chase/\",
+      \"content\": \"Harrison Chase is the CEO and co-founder of LangChain, a company
+      formed around the open source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications\"}, {\"url\": \"https://www.sequoiacap.PLACEHOLDER_FOR_SECRET_ID-data-harrison-chase/\",
+      \"content\": \"Sonya Huang: Hi, and welcome to training data. We have with us
+      today Harrison Chase, founder and CEO of LangChain. Harrison is a legend in
+      the agent ecosystem, as the product visionary who first connected LLMs with
+      tools and actions. And LangChain is the most popular agent building framework
+      in the AI space.\"}, {\"url\": \"https://www.youtube.com/watch?v=7D8bw_4hTdo\",
+      \"content\": \"Join us for an insightful interview with Harrison Chase, the
+      CEO and co-founder of Langchain, as he provides a comprehensive overview of
+      Langchain''s innovati\"}, {\"url\": \"https://www.forbes.PLACEHOLDER_FOR_SECRET_ID-chase/\",
+      \"content\": \"Harrison Chase only cofounded LangChain in late 2022, but the
+      company caught instant attention for enabling anyone to build apps powered by
+      large language models like GPT-4 in as little as two\"}, {\"url\": \"https://en.wikipedia.org/wiki/LangChain\",
+      \"content\": \"In October 2023 LangChain introduced LangServe, a deployment
+      tool designed to facilitate the transition from LCEL (LangChain Expression Language)
+      prototypes to production-ready applications.[5]\\nIntegrations[edit]\\nAs of
+      March 2023, LangChain included integrations with systems including Amazon, Google,
+      and Microsoft Azure cloud storage; API wrappers for news, movie information,
+      and weather; Bash for summarization, syntax and semantics checking, and execution
+      of shell scripts; multiple web scraping subsystems and templates; few-shot learning
+      prompt generation support; finding and summarizing \\\"todo\\\" tasks in code;
+      Google Drive documents, spreadsheets, and presentations summarization, extraction,
+      and creation; Google Search and Microsoft Bing web search; OpenAI, Anthropic,
+      and Hugging Face language models; iFixit repair guides and wikis search and
+      summarization; MapReduce for question answering, combining documents, and question
+      generation; N-gram overlap scoring; PyPDF, pdfminer, fitz, and pymupdf for PDF
+      file text extraction and manipulation; Python and JavaScript code generation,
+      analysis, and debugging; Milvus vector database[6] to store and retrieve vector
+      embeddings; Weaviate vector database[7] to cache embedding and data objects;
+      Redis cache database storage; Python RequestsWrapper and other methods for API
+      requests; SQL and NoSQL databases including JSON support; Streamlit, including
+      for logging; text mapping for k-nearest neighbors search; time zone conversion
+      and calendar operations; tracing and recording stack symbols in threaded and
+      asynchronous subprocess runs; and the Wolfram Alpha website and SDK.[8] As a
+      language model integration framework, LangChain''s use-cases largely overlap
+      with those of language models in general, including document analysis and summarization,
+      chatbots, and code analysis.[2]\\nHistory[edit]\\nLangChain was launched in
+      October 2022 as an open source project by Harrison Chase, while working at machine
+      learning startup Robust Intelligence. In April 2023, LangChain had incorporated
+      and the new startup raised over $20 million in funding at a valuation of at
+      least $200 million from venture firm Sequoia Capital, a week after announcing
+      a $10 million seed investment from Benchmark.[3][4]\\n The project quickly garnered
+      popularity, with improvements from hundreds of contributors on GitHub, trending
+      discussions on Twitter, lively activity on the project''s Discord server, many
+      YouTube tutorials, and meetups in San Francisco and London. As of April 2023,
+      it can read from more than 50 document types and data sources.[9]\\nReferences[edit]\\nExternal
+      links[edit]\"}, {\"url\": \"https://analyticsindiamag.com/people/harrison-chase/\",
+      \"content\": \"By AIM The dynamic co-founder and CEO of LangChain, Harrison
+      Chase is simplifying the creation of applications powered by LLMs. With a background
+      in statistics and computer science from Harvard University, Chase has carved
+      a niche in the AI landscape. AIM Brand Solutions, a marketing division within
+      AIM, specializes in creating diverse content such as documentaries, public artworks,
+      podcasts, videos, articles, and more to effectively tell compelling stories.
+      AIM Research produces a series of annual reports on AI & Data Science covering
+      every aspect of the industry. Discover how Cypher 2024 expands to the USA, bridging
+      AI innovation gaps and tackling the challenges of enterprise AI adoption AIM
+      India AIM Research AIM Leaders Council 50 Best Data Science Firms\"}, {\"url\":
+      \"https://www.turingpost.com/p/harrison-chase-langchain-ai-agents\", \"content\":
+      \"Harrison Chase, founder of LangChain, shared insights on the evolution of
+      AI agents and their applications during Sequoia Capital''s AI Ascent. ... Saves
+      you a lot of research time, plus gives a flashback to ML history and insights
+      into the future. Stay ahead alongside over 73,000 professionals from top AI
+      labs, ML startups, and enterprises\"}]", "tool_use_id": "toolu_PLACEHOLDER_FOR_SECRET_ID",
+      "is_error": false}]}], "model": "claude-3-5-sonnet-20240620", "system": "You
+      are a helpful AI assistant.\n\nSystem time: 2024-11-13T23:54:07.180606+00:00",
+      "tools": [{"name": "search", "description": "Search for general web results.
+      This function performs a search using the Tavily search engine, which is designed\nto
+      provide comprehensive, accurate, and trusted results. It''s particularly useful\nfor
+      answering questions about current events.", "input_schema": {"properties": {"query":
+      {"type": "string"}}, "required": ["query"], "type": "object"}}]}'
+    headers: {}
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        CAYAAA==
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 8e22b04158a84cb1-PHL
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 13 Nov 2024 23:54:48 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Robots-Tag:
+      - none
+      anthropic-ratelimit-requests-limit:
+      - '4000'
+      anthropic-ratelimit-requests-remaining:
+      - '3999'
+      anthropic-ratelimit-requests-reset:
+      - '2024-11-13T23:54:42Z'
+      anthropic-ratelimit-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '400000'
+      anthropic-ratelimit-tokens-reset:
+      - '2024-11-13T23:54:48Z'
+      request-id:
+      - req_PLACEHOLDER_FOR_SECRET_ID
+      via:
+      - 1.1 google
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 1024, "messages": [{"role": "user", "content": "Who is the
+      founder of LangChain?"}], "model": "claude-3-5-sonnet-20240620", "system": "You
+      are a helpful AI assistant.\n\nSystem time: 2024-11-13T23:54:32.018816+00:00",
+      "tools": [{"name": "search", "description": "Search for general web results.
+      This function performs a search using the Tavily search engine, which is designed\nto
+      provide comprehensive, accurate, and trusted results. It''s particularly useful\nfor
+      answering questions about current events.", "input_schema": {"properties": {"query":
+      {"type": "string"}}, "required": ["query"], "type": "object"}}]}'
+    headers: {}
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 8e22b0dcbd844caf-PHL
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 13 Nov 2024 23:55:09 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Robots-Tag:
+      - none
+      anthropic-ratelimit-requests-limit:
+      - '4000'
+      anthropic-ratelimit-requests-remaining:
+      - '3999'
+      anthropic-ratelimit-requests-reset:
+      - '2024-11-13T23:55:07Z'
+      anthropic-ratelimit-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '400000'
+      anthropic-ratelimit-tokens-reset:
+      - '2024-11-13T23:55:09Z'
+      request-id:
+      - req_PLACEHOLDER_FOR_SECRET_ID
+      via:
+      - 1.1 google
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 1024, "messages": [{"role": "user", "content": "Who is the
+      founder of LangChain?"}, {"role": "assistant", "content": [{"text": "To answer
+      this question accurately, I''ll need to search for the most up-to-date information
+      about LangChain and its founder. Let me do that for you.", "type": "text"},
+      {"type": "tool_use", "name": "search", "input": {"query": "Who is the founder
+      of LangChain?"}, "id": "toolu_PLACEHOLDER_FOR_SECRET_ID"}]}, {"role": "user",
+      "content": [{"type": "tool_result", "content": "[{\"url\": \"https://sfelc.PLACEHOLDER_FOR_SECRET_ID-chase\",
+      \"content\": \"Harrison Chase is the CEO and co-founder of LangChain, a company
+      formed around the open source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications. Prior to starting LangChain, he
+      led the ML team at Robust Intelligence (an MLOps company focused on testing
+      and validation of machine learning models), led the\"}, {\"url\": \"https://aiconference.PLACEHOLDER_FOR_SECRET_ID-chase/\",
+      \"content\": \"Harrison Chase is the co-founder and CEO of LangChain, a company
+      formed around the open-source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications. Prior to starting LangChain, he
+      led the ML team at Robust Intelligence (an MLOps company focused on testing
+      and validation of machine learning models), led the\"}, {\"url\": \"https://tedai-sanfrancisco.ted.com/speakers-1/harrison-chase-/co-founder-and-ceo,-langchain/\",
+      \"content\": \"Harrison Chase, a Harvard graduate in statistics and computer
+      science, co-founded LangChain to streamline the development of Language Model
+      applications with open-source Python/Typescript packages. Chase''s experience
+      includes heading the Machine Learning team at Robust Intelligence, focusing
+      on the testing and validation of machine learning models, and leading the entity
+      linking team at Kensho\"}, {\"url\": \"https://techcrunch.com/author/harrison-chase/\",
+      \"content\": \"Harrison Chase is the CEO and co-founder of LangChain, a company
+      formed around the open source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications\"}, {\"url\": \"https://www.sequoiacap.PLACEHOLDER_FOR_SECRET_ID-data-harrison-chase/\",
+      \"content\": \"Sonya Huang: Hi, and welcome to training data. We have with us
+      today Harrison Chase, founder and CEO of LangChain. Harrison is a legend in
+      the agent ecosystem, as the product visionary who first connected LLMs with
+      tools and actions. And LangChain is the most popular agent building framework
+      in the AI space.\"}, {\"url\": \"https://www.youtube.com/watch?v=7D8bw_4hTdo\",
+      \"content\": \"Join us for an insightful interview with Harrison Chase, the
+      CEO and co-founder of Langchain, as he provides a comprehensive overview of
+      Langchain''s innovati\"}, {\"url\": \"https://www.forbes.PLACEHOLDER_FOR_SECRET_ID-chase/\",
+      \"content\": \"Harrison Chase only cofounded LangChain in late 2022, but the
+      company caught instant attention for enabling anyone to build apps powered by
+      large language models like GPT-4 in as little as two\"}, {\"url\": \"https://en.wikipedia.org/wiki/LangChain\",
+      \"content\": \"In October 2023 LangChain introduced LangServe, a deployment
+      tool designed to facilitate the transition from LCEL (LangChain Expression Language)
+      prototypes to production-ready applications.[5]\\nIntegrations[edit]\\nAs of
+      March 2023, LangChain included integrations with systems including Amazon, Google,
+      and Microsoft Azure cloud storage; API wrappers for news, movie information,
+      and weather; Bash for summarization, syntax and semantics checking, and execution
+      of shell scripts; multiple web scraping subsystems and templates; few-shot learning
+      prompt generation support; finding and summarizing \\\"todo\\\" tasks in code;
+      Google Drive documents, spreadsheets, and presentations summarization, extraction,
+      and creation; Google Search and Microsoft Bing web search; OpenAI, Anthropic,
+      and Hugging Face language models; iFixit repair guides and wikis search and
+      summarization; MapReduce for question answering, combining documents, and question
+      generation; N-gram overlap scoring; PyPDF, pdfminer, fitz, and pymupdf for PDF
+      file text extraction and manipulation; Python and JavaScript code generation,
+      analysis, and debugging; Milvus vector database[6] to store and retrieve vector
+      embeddings; Weaviate vector database[7] to cache embedding and data objects;
+      Redis cache database storage; Python RequestsWrapper and other methods for API
+      requests; SQL and NoSQL databases including JSON support; Streamlit, including
+      for logging; text mapping for k-nearest neighbors search; time zone conversion
+      and calendar operations; tracing and recording stack symbols in threaded and
+      asynchronous subprocess runs; and the Wolfram Alpha website and SDK.[8] As a
+      language model integration framework, LangChain''s use-cases largely overlap
+      with those of language models in general, including document analysis and summarization,
+      chatbots, and code analysis.[2]\\nHistory[edit]\\nLangChain was launched in
+      October 2022 as an open source project by Harrison Chase, while working at machine
+      learning startup Robust Intelligence. In April 2023, LangChain had incorporated
+      and the new startup raised over $20 million in funding at a valuation of at
+      least $200 million from venture firm Sequoia Capital, a week after announcing
+      a $10 million seed investment from Benchmark.[3][4]\\n The project quickly garnered
+      popularity, with improvements from hundreds of contributors on GitHub, trending
+      discussions on Twitter, lively activity on the project''s Discord server, many
+      YouTube tutorials, and meetups in San Francisco and London. As of April 2023,
+      it can read from more than 50 document types and data sources.[9]\\nReferences[edit]\\nExternal
+      links[edit]\"}, {\"url\": \"https://analyticsindiamag.com/people/harrison-chase/\",
+      \"content\": \"By AIM The dynamic co-founder and CEO of LangChain, Harrison
+      Chase is simplifying the creation of applications powered by LLMs. With a background
+      in statistics and computer science from Harvard University, Chase has carved
+      a niche in the AI landscape. AIM Brand Solutions, a marketing division within
+      AIM, specializes in creating diverse content such as documentaries, public artworks,
+      podcasts, videos, articles, and more to effectively tell compelling stories.
+      AIM Research produces a series of annual reports on AI & Data Science covering
+      every aspect of the industry. Discover how Cypher 2024 expands to the USA, bridging
+      AI innovation gaps and tackling the challenges of enterprise AI adoption AIM
+      India AIM Research AIM Leaders Council 50 Best Data Science Firms\"}, {\"url\":
+      \"https://www.turingpost.com/p/harrison-chase-langchain-ai-agents\", \"content\":
+      \"Harrison Chase, founder of LangChain, shared insights on the evolution of
+      AI agents and their applications during Sequoia Capital''s AI Ascent. ... Saves
+      you a lot of research time, plus gives a flashback to ML history and insights
+      into the future. Stay ahead alongside over 73,000 professionals from top AI
+      labs, ML startups, and enterprises\"}]", "tool_use_id": "toolu_PLACEHOLDER_FOR_SECRET_ID",
+      "is_error": false}]}], "model": "claude-3-5-sonnet-20240620", "system": "You
+      are a helpful AI assistant.\n\nSystem time: 2024-11-13T23:54:34.582739+00:00",
+      "tools": [{"name": "search", "description": "Search for general web results.
+      This function performs a search using the Tavily search engine, which is designed\nto
+      provide comprehensive, accurate, and trusted results. It''s particularly useful\nfor
+      answering questions about current events.", "input_schema": {"properties": {"query":
+      {"type": "string"}}, "required": ["query"], "type": "object"}}]}'
+    headers: {}
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        //8DAHryTTDvBgAA
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 8e22b0ec98794caf-PHL
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 13 Nov 2024 23:55:17 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Robots-Tag:
+      - none
+      anthropic-ratelimit-requests-limit:
+      - '4000'
+      anthropic-ratelimit-requests-remaining:
+      - '3999'
+      anthropic-ratelimit-requests-reset:
+      - '2024-11-13T23:55:10Z'
+      anthropic-ratelimit-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '400000'
+      anthropic-ratelimit-tokens-reset:
+      - '2024-11-13T23:55:17Z'
+      request-id:
+      - req_PLACEHOLDER_FOR_SECRET_ID
+      via:
+      - 1.1 google
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 1024, "messages": [{"role": "user", "content": "Who is the
+      founder of LangChain?"}], "model": "claude-3-5-sonnet-20240620", "system": "You
+      are a helpful AI assistant.\n\nSystem time: 2024-11-13T23:54:53.846143+00:00",
+      "tools": [{"name": "search", "description": "Search for general web results.
+      This function performs a search using the Tavily search engine, which is designed\nto
+      provide comprehensive, accurate, and trusted results. It''s particularly useful\nfor
+      answering questions about current events.", "input_schema": {"properties": {"query":
+      {"type": "string"}}, "required": ["query"], "type": "object"}}]}'
+    headers: {}
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 8e22b1653bb54cb6-PHL
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 13 Nov 2024 23:55:32 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Robots-Tag:
+      - none
+      anthropic-ratelimit-requests-limit:
+      - '4000'
+      anthropic-ratelimit-requests-remaining:
+      - '3999'
+      anthropic-ratelimit-requests-reset:
+      - '2024-11-13T23:55:29Z'
+      anthropic-ratelimit-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '400000'
+      anthropic-ratelimit-tokens-reset:
+      - '2024-11-13T23:55:32Z'
+      request-id:
+      - req_PLACEHOLDER_FOR_SECRET_ID
+      via:
+      - 1.1 google
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 1024, "messages": [{"role": "user", "content": "Who is the
+      founder of LangChain?"}, {"role": "assistant", "content": [{"text": "To answer
+      this question accurately, I''ll need to search for the most up-to-date information
+      about LangChain and its founder. Let me do that for you.", "type": "text"},
+      {"type": "tool_use", "name": "search", "input": {"query": "founder of LangChain"},
+      "id": "toolu_PLACEHOLDER_FOR_SECRET_ID"}]}, {"role": "user", "content": [{"type":
+      "tool_result", "content": "[{\"url\": \"https://sfelc.PLACEHOLDER_FOR_SECRET_ID-chase\",
+      \"content\": \"Harrison Chase is the CEO and co-founder of LangChain, a company
+      formed around the open source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications. Prior to starting LangChain, he
+      led the ML team at Robust Intelligence (an MLOps company focused on testing
+      and validation of machine learning models), led the\"}, {\"url\": \"https://aiconference.PLACEHOLDER_FOR_SECRET_ID-chase/\",
+      \"content\": \"Harrison Chase is the co-founder and CEO of LangChain, a company
+      formed around the open-source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications. Prior to starting LangChain, he
+      led the ML team at Robust Intelligence (an MLOps company focused on testing
+      and validation of machine learning models), led the\"}, {\"url\": \"https://tedai-sanfrancisco.ted.com/speakers-1/harrison-chase-/co-founder-and-ceo,-langchain/\",
+      \"content\": \"Harrison Chase, a Harvard graduate in statistics and computer
+      science, co-founded LangChain to streamline the development of Language Model
+      applications with open-source Python/Typescript packages. Chase''s experience
+      includes heading the Machine Learning team at Robust Intelligence, focusing
+      on the testing and validation of machine learning models, and leading the entity
+      linking team at Kensho\"}, {\"url\": \"https://techcrunch.com/author/harrison-chase/\",
+      \"content\": \"Harrison Chase is the CEO and co-founder of LangChain, a company
+      formed around the open source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications\"}, {\"url\": \"https://www.sequoiacap.PLACEHOLDER_FOR_SECRET_ID-data-harrison-chase/\",
+      \"content\": \"Sonya Huang: Hi, and welcome to training data. We have with us
+      today Harrison Chase, founder and CEO of LangChain. Harrison is a legend in
+      the agent ecosystem, as the product visionary who first connected LLMs with
+      tools and actions. And LangChain is the most popular agent building framework
+      in the AI space.\"}, {\"url\": \"https://www.youtube.com/watch?v=7D8bw_4hTdo\",
+      \"content\": \"Join us for an insightful interview with Harrison Chase, the
+      CEO and co-founder of Langchain, as he provides a comprehensive overview of
+      Langchain''s innovati\"}, {\"url\": \"https://www.forbes.PLACEHOLDER_FOR_SECRET_ID-chase/\",
+      \"content\": \"Harrison Chase only cofounded LangChain in late 2022, but the
+      company caught instant attention for enabling anyone to build apps powered by
+      large language models like GPT-4 in as little as two\"}, {\"url\": \"https://en.wikipedia.org/wiki/LangChain\",
+      \"content\": \"In October 2023 LangChain introduced LangServe, a deployment
+      tool designed to facilitate the transition from LCEL (LangChain Expression Language)
+      prototypes to production-ready applications.[5]\\nIntegrations[edit]\\nAs of
+      March 2023, LangChain included integrations with systems including Amazon, Google,
+      and Microsoft Azure cloud storage; API wrappers for news, movie information,
+      and weather; Bash for summarization, syntax and semantics checking, and execution
+      of shell scripts; multiple web scraping subsystems and templates; few-shot learning
+      prompt generation support; finding and summarizing \\\"todo\\\" tasks in code;
+      Google Drive documents, spreadsheets, and presentations summarization, extraction,
+      and creation; Google Search and Microsoft Bing web search; OpenAI, Anthropic,
+      and Hugging Face language models; iFixit repair guides and wikis search and
+      summarization; MapReduce for question answering, combining documents, and question
+      generation; N-gram overlap scoring; PyPDF, pdfminer, fitz, and pymupdf for PDF
+      file text extraction and manipulation; Python and JavaScript code generation,
+      analysis, and debugging; Milvus vector database[6] to store and retrieve vector
+      embeddings; Weaviate vector database[7] to cache embedding and data objects;
+      Redis cache database storage; Python RequestsWrapper and other methods for API
+      requests; SQL and NoSQL databases including JSON support; Streamlit, including
+      for logging; text mapping for k-nearest neighbors search; time zone conversion
+      and calendar operations; tracing and recording stack symbols in threaded and
+      asynchronous subprocess runs; and the Wolfram Alpha website and SDK.[8] As a
+      language model integration framework, LangChain''s use-cases largely overlap
+      with those of language models in general, including document analysis and summarization,
+      chatbots, and code analysis.[2]\\nHistory[edit]\\nLangChain was launched in
+      October 2022 as an open source project by Harrison Chase, while working at machine
+      learning startup Robust Intelligence. In April 2023, LangChain had incorporated
+      and the new startup raised over $20 million in funding at a valuation of at
+      least $200 million from venture firm Sequoia Capital, a week after announcing
+      a $10 million seed investment from Benchmark.[3][4]\\n The project quickly garnered
+      popularity, with improvements from hundreds of contributors on GitHub, trending
+      discussions on Twitter, lively activity on the project''s Discord server, many
+      YouTube tutorials, and meetups in San Francisco and London. As of April 2023,
+      it can read from more than 50 document types and data sources.[9]\\nReferences[edit]\\nExternal
+      links[edit]\"}, {\"url\": \"https://analyticsindiamag.com/people/harrison-chase/\",
+      \"content\": \"By AIM The dynamic co-founder and CEO of LangChain, Harrison
+      Chase is simplifying the creation of applications powered by LLMs. With a background
+      in statistics and computer science from Harvard University, Chase has carved
+      a niche in the AI landscape. AIM Brand Solutions, a marketing division within
+      AIM, specializes in creating diverse content such as documentaries, public artworks,
+      podcasts, videos, articles, and more to effectively tell compelling stories.
+      AIM Research produces a series of annual reports on AI & Data Science covering
+      every aspect of the industry. Discover how Cypher 2024 expands to the USA, bridging
+      AI innovation gaps and tackling the challenges of enterprise AI adoption AIM
+      India AIM Research AIM Leaders Council 50 Best Data Science Firms\"}, {\"url\":
+      \"https://www.turingpost.com/p/harrison-chase-langchain-ai-agents\", \"content\":
+      \"Harrison Chase, founder of LangChain, shared insights on the evolution of
+      AI agents and their applications during Sequoia Capital''s AI Ascent. ... Saves
+      you a lot of research time, plus gives a flashback to ML history and insights
+      into the future. Stay ahead alongside over 73,000 professionals from top AI
+      labs, ML startups, and enterprises\"}]", "tool_use_id": "toolu_PLACEHOLDER_FOR_SECRET_ID",
+      "is_error": false}]}], "model": "claude-3-5-sonnet-20240620", "system": "You
+      are a helpful AI assistant.\n\nSystem time: 2024-11-13T23:54:56.977251+00:00",
+      "tools": [{"name": "search", "description": "Search for general web results.
+      This function performs a search using the Tavily search engine, which is designed\nto
+      provide comprehensive, accurate, and trusted results. It''s particularly useful\nfor
+      answering questions about current events.", "input_schema": {"properties": {"query":
+      {"type": "string"}}, "required": ["query"], "type": "object"}}]}'
+    headers: {}
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 8e22b178d9d04cb4-PHL
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 13 Nov 2024 23:55:39 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Robots-Tag:
+      - none
+      anthropic-ratelimit-requests-limit:
+      - '4000'
+      anthropic-ratelimit-requests-remaining:
+      - '3999'
+      anthropic-ratelimit-requests-reset:
+      - '2024-11-13T23:55:32Z'
+      anthropic-ratelimit-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '400000'
+      anthropic-ratelimit-tokens-reset:
+      - '2024-11-13T23:55:39Z'
+      request-id:
+      - req_PLACEHOLDER_FOR_SECRET_ID
+      via:
+      - 1.1 google
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 1024, "messages": [{"role": "user", "content": "Who is the
+      founder of LangChain?"}], "model": "claude-3-5-sonnet-20240620", "system": "You
+      are a helpful AI assistant.", "tools": [{"name": "search", "description": "Search
+      for general web results. This function performs a search using the Tavily search
+      engine, which is designed\nto provide comprehensive, accurate, and trusted results.
+      It''s particularly useful\nfor answering questions about current events.", "input_schema":
+      {"properties": {"query": {"type": "string"}}, "required": ["query"], "type":
+      "object"}}]}'
+    headers: {}
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 8e22b64a18a54caf-PHL
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 13 Nov 2024 23:58:52 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Robots-Tag:
+      - none
+      anthropic-ratelimit-requests-limit:
+      - '4000'
+      anthropic-ratelimit-requests-remaining:
+      - '3999'
+      anthropic-ratelimit-requests-reset:
+      - '2024-11-13T23:58:49Z'
+      anthropic-ratelimit-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '400000'
+      anthropic-ratelimit-tokens-reset:
+      - '2024-11-13T23:58:52Z'
+      request-id:
+      - req_PLACEHOLDER_FOR_SECRET_ID
+      via:
+      - 1.1 google
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 1024, "messages": [{"role": "user", "content": "Who is the
+      founder of LangChain?"}, {"role": "assistant", "content": [{"text": "To answer
+      this question accurately, I''ll need to search for the most up-to-date information
+      about LangChain and its founder. Let me do that for you.", "type": "text"},
+      {"type": "tool_use", "name": "search", "input": {"query": "Who is the founder
+      of LangChain"}, "id": "toolu_PLACEHOLDER_FOR_SECRET_ID"}]}, {"role": "user",
+      "content": [{"type": "tool_result", "content": "[{\"url\": \"https://sfelc.PLACEHOLDER_FOR_SECRET_ID-chase\",
+      \"content\": \"Harrison Chase is the CEO and co-founder of LangChain, a company
+      formed around the open source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications. Prior to starting LangChain, he
+      led the ML team at Robust Intelligence (an MLOps company focused on testing
+      and validation of machine learning models), led the\"}, {\"url\": \"https://aiconference.PLACEHOLDER_FOR_SECRET_ID-chase/\",
+      \"content\": \"Harrison Chase is the co-founder and CEO of LangChain, a company
+      formed around the open-source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications. Prior to starting LangChain, he
+      led the ML team at Robust Intelligence (an MLOps company focused on testing
+      and validation of machine learning models), led the\"}, {\"url\": \"https://tedai-sanfrancisco.ted.com/speakers-1/harrison-chase-/co-founder-and-ceo,-langchain/\",
+      \"content\": \"Harrison Chase, a Harvard graduate in statistics and computer
+      science, co-founded LangChain to streamline the development of Language Model
+      applications with open-source Python/Typescript packages. Chase''s experience
+      includes heading the Machine Learning team at Robust Intelligence, focusing
+      on the testing and validation of machine learning models, and leading the entity
+      linking team at Kensho\"}, {\"url\": \"https://techcrunch.com/author/harrison-chase/\",
+      \"content\": \"Harrison Chase is the CEO and co-founder of LangChain, a company
+      formed around the open source Python/Typescript packages that aim to make it
+      easy to develop Language Model applications\"}, {\"url\": \"https://www.sequoiacap.PLACEHOLDER_FOR_SECRET_ID-data-harrison-chase/\",
+      \"content\": \"Sonya Huang: Hi, and welcome to training data. We have with us
+      today Harrison Chase, founder and CEO of LangChain. Harrison is a legend in
+      the agent ecosystem, as the product visionary who first connected LLMs with
+      tools and actions. And LangChain is the most popular agent building framework
+      in the AI space.\"}, {\"url\": \"https://www.youtube.com/watch?v=7D8bw_4hTdo\",
+      \"content\": \"Join us for an insightful interview with Harrison Chase, the
+      CEO and co-founder of Langchain, as he provides a comprehensive overview of
+      Langchain''s innovati\"}, {\"url\": \"https://www.forbes.PLACEHOLDER_FOR_SECRET_ID-chase/\",
+      \"content\": \"Harrison Chase only cofounded LangChain in late 2022, but the
+      company caught instant attention for enabling anyone to build apps powered by
+      large language models like GPT-4 in as little as two\"}, {\"url\": \"https://en.wikipedia.org/wiki/LangChain\",
+      \"content\": \"In October 2023 LangChain introduced LangServe, a deployment
+      tool designed to facilitate the transition from LCEL (LangChain Expression Language)
+      prototypes to production-ready applications.[5]\\nIntegrations[edit]\\nAs of
+      March 2023, LangChain included integrations with systems including Amazon, Google,
+      and Microsoft Azure cloud storage; API wrappers for news, movie information,
+      and weather; Bash for summarization, syntax and semantics checking, and execution
+      of shell scripts; multiple web scraping subsystems and templates; few-shot learning
+      prompt generation support; finding and summarizing \\\"todo\\\" tasks in code;
+      Google Drive documents, spreadsheets, and presentations summarization, extraction,
+      and creation; Google Search and Microsoft Bing web search; OpenAI, Anthropic,
+      and Hugging Face language models; iFixit repair guides and wikis search and
+      summarization; MapReduce for question answering, combining documents, and question
+      generation; N-gram overlap scoring; PyPDF, pdfminer, fitz, and pymupdf for PDF
+      file text extraction and manipulation; Python and JavaScript code generation,
+      analysis, and debugging; Milvus vector database[6] to store and retrieve vector
+      embeddings; Weaviate vector database[7] to cache embedding and data objects;
+      Redis cache database storage; Python RequestsWrapper and other methods for API
+      requests; SQL and NoSQL databases including JSON support; Streamlit, including
+      for logging; text mapping for k-nearest neighbors search; time zone conversion
+      and calendar operations; tracing and recording stack symbols in threaded and
+      asynchronous subprocess runs; and the Wolfram Alpha website and SDK.[8] As a
+      language model integration framework, LangChain''s use-cases largely overlap
+      with those of language models in general, including document analysis and summarization,
+      chatbots, and code analysis.[2]\\nHistory[edit]\\nLangChain was launched in
+      October 2022 as an open source project by Harrison Chase, while working at machine
+      learning startup Robust Intelligence. In April 2023, LangChain had incorporated
+      and the new startup raised over $20 million in funding at a valuation of at
+      least $200 million from venture firm Sequoia Capital, a week after announcing
+      a $10 million seed investment from Benchmark.[3][4]\\n The project quickly garnered
+      popularity, with improvements from hundreds of contributors on GitHub, trending
+      discussions on Twitter, lively activity on the project''s Discord server, many
+      YouTube tutorials, and meetups in San Francisco and London. As of April 2023,
+      it can read from more than 50 document types and data sources.[9]\\nReferences[edit]\\nExternal
+      links[edit]\"}, {\"url\": \"https://analyticsindiamag.com/people/harrison-chase/\",
+      \"content\": \"By AIM The dynamic co-founder and CEO of LangChain, Harrison
+      Chase is simplifying the creation of applications powered by LLMs. With a background
+      in statistics and computer science from Harvard University, Chase has carved
+      a niche in the AI landscape. AIM Brand Solutions, a marketing division within
+      AIM, specializes in creating diverse content such as documentaries, public artworks,
+      podcasts, videos, articles, and more to effectively tell compelling stories.
+      AIM Research produces a series of annual reports on AI & Data Science covering
+      every aspect of the industry. Discover how Cypher 2024 expands to the USA, bridging
+      AI innovation gaps and tackling the challenges of enterprise AI adoption AIM
+      India AIM Research AIM Leaders Council 50 Best Data Science Firms\"}, {\"url\":
+      \"https://www.turingpost.com/p/harrison-chase-langchain-ai-agents\", \"content\":
+      \"Harrison Chase, founder of LangChain, shared insights on the evolution of
+      AI agents and their applications during Sequoia Capital''s AI Ascent. ... Saves
+      you a lot of research time, plus gives a flashback to ML history and insights
+      into the future. Stay ahead alongside over 73,000 professionals from top AI
+      labs, ML startups, and enterprises\"}]", "tool_use_id": "toolu_PLACEHOLDER_FOR_SECRET_ID",
+      "is_error": false}]}], "model": "claude-3-5-sonnet-20240620", "system": "You
+      are a helpful AI assistant.", "tools": [{"name": "search", "description": "Search
+      for general web results. This function performs a search using the Tavily search
+      engine, which is designed\nto provide comprehensive, accurate, and trusted results.
+      It''s particularly useful\nfor answering questions about current events.", "input_schema":
+      {"properties": {"query": {"type": "string"}}, "required": ["query"], "type":
+      "object"}}]}'
+    headers: {}
+    method: POST
+    uri: https://api.anthropic.com/v1/messages
+  response:
+    body:
+      string: !!binary |
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+        PLACEHOLDER_FOR_SECRET_ID
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 8e22b65b6bda4caf-PHL
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 13 Nov 2024 23:58:59 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      X-Robots-Tag:
+      - none
+      anthropic-ratelimit-requests-limit:
+      - '4000'
+      anthropic-ratelimit-requests-remaining:
+      - '3999'
+      anthropic-ratelimit-requests-reset:
+      - '2024-11-13T23:58:52Z'
+      anthropic-ratelimit-tokens-limit:
+      - '400000'
+      anthropic-ratelimit-tokens-remaining:
+      - '400000'
+      anthropic-ratelimit-tokens-reset:
+      - '2024-11-13T23:58:59Z'
+      request-id:
+      - req_PLACEHOLDER_FOR_SECRET_ID
+      via:
+      - 1.1 google
+    status:
+      code: 200
+      message: OK
+version: 1
