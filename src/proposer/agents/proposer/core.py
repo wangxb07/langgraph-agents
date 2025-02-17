@@ -1,41 +1,16 @@
 from langchain_core.messages import HumanMessage, SystemMessage
 from typing import Dict, List, Any, Optional
-from models.base import BaseQwenModel
-from langsmith import traceable
-import logging
-from langchain.schema import SystemMessage, HumanMessage
 from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
+from proposer.utils import init_custom_chat_model
+from .prompts import PROPOSER_SYSTEM_PROMPT, PROPOSER_BASE_PROMPT, PROPOSER_RAG_PROMPT
+import logging
+from langsmith import traceable
 
 logger = logging.getLogger(__name__)
 
 # 配置日志
 logging.basicConfig(level=logging.INFO)
-
-class QwenModel(BaseQwenModel):
-    """Proposer专用的Qwen模型实现"""
-    def __init__(self, model: str = "qwen-plus", api_version: str = "v1"):
-        super().__init__(model=model, api_version=api_version, agent_name="proposer")
-
-    async def ainvoke(self, messages: List[Any], step_id: str) -> str:
-        """调用Qwen模型，专门用于处理提案生成任务
-        
-        Args:
-            messages: 消息列表
-            step_id: 步骤ID
-            
-        Returns:
-            str: 模型生成的文本
-            
-        Raises:
-            ValueError: 如果模型调用失败或返回无效响应
-        """
-        return await self._base_ainvoke(
-            messages=messages,
-            step_id=step_id,
-            extra_metadata={"task": "proposal_generation"},
-            temperature=1.5
-        )
 
 class ProposerAgent:
     """提案生成器，负责生成提案内容"""
@@ -47,43 +22,24 @@ class ProposerAgent:
             model: 模型名称
             api_version: API版本
         """
-        self.model = QwenModel(model, api_version)
+        self.model = init_custom_chat_model(model)
         
         # 定义系统提示模板
         self.system_prompt = PromptTemplate(
-            template="""您是资深运营专家，请基于以下目标和约束生成创新方案。
-
-目标：
-{goals}
-
-约束：
-{constraints}
-
-""",
-            input_variables=["goals", "constraints"]
+            template=PROPOSER_SYSTEM_PROMPT,
+            input_variables=["input"],
+            partial_variables={}
         )
         
         # 定义用户提示模板（基础版本）
         self.base_prompt = PromptTemplate(
-            template="""基于以下背景，生成详细的创新方案：
-{input}
-
-请确保内容尽量详细。
-""",
+            template=PROPOSER_BASE_PROMPT,
             input_variables=["input"]
         )
         
         # 定义用户提示模板（RAG增强版本）
         self.rag_prompt = PromptTemplate(
-            template="""基于以下背景和参考资料，生成详细的创新方案：
-{input}
-
-# 参考资料
-{references_text}
-
-要求：
-1. 充分利用参考资料中的相关信息
-""",
+            template=PROPOSER_RAG_PROMPT,
             input_variables=["input", "references_text"]
         )
         
@@ -163,8 +119,7 @@ class ProposerAgent:
             
             # 准备系统消息
             system_msg = SystemMessage(content=self.system_prompt.format(
-                goals="\n".join(f"- {goal}" for goal in goals),
-                constraints="\n".join(f"- {c['type']}: {c['value']}" for c in constraints)
+                input=input
             ))
             
             # 准备用户消息

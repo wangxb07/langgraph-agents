@@ -1,33 +1,18 @@
 from typing import Dict, List, Any, Optional
-from models.base import BaseQwenModel
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.prompts import PromptTemplate
 from langchain_core.pydantic_v1 import BaseModel, Field
-from langchain_core.output_parsers import JsonOutputParser
 from langsmith import traceable
 import logging
 import json
 import numpy as np
 from collections import defaultdict
+from proposer.utils import init_custom_chat_model
+from .prompts import OPTIMIZER_SYSTEM_PROMPT, OPTIMIZER_OPTIMIZATION_PROMPT
 
 # 配置日志
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
-class QwenModel(BaseQwenModel):
-    """Optimizer专用的Qwen模型实现"""
-    def __init__(self, model: str = "qwen-plus", api_version: str = "v1"):
-        super().__init__(model=model, api_version=api_version, agent_name="optimizer")
-        
-    @traceable(run_type="prompt", name="optimizer")
-    async def ainvoke(self, messages: List[Any], step_id: str) -> str:
-        """调用Qwen模型，专门用于处理提案优化任务"""
-        return await self._base_ainvoke(
-            messages=messages,
-            step_id=step_id,
-            extra_metadata={"task": "proposal_optimization"},
-            temperature=0.8  # 使用较低的temperature以保持一致性
-        )
 
 class OptimizerAgent:
     """提案优化器
@@ -41,49 +26,18 @@ class OptimizerAgent:
 
     def __init__(self, model: str = "qwen-max", api_version: str = "v1"):
         """初始化提案优化器"""
-        self.model = QwenModel(model, api_version)
+        self.model = init_custom_chat_model(model)
         
         # 定义系统提示模板
         self.system_prompt = PromptTemplate(
-            template="""您是提案优化专家。基于评估历史和改进建议，生成一个优化后的提案版本。
-
-评估重点：
-1. 各部分评分和具体改进建议
-2. 历史改进记录的参考
-3. 整体提案质量提升
-
-优化原则：
-1. 保持提案核心价值
-2. 针对性解决评估中的问题
-3. 确保前后版本的连贯性
-4. 突出改进点的实质性变化
-""",
-            input_variables=[]
+            template=OPTIMIZER_SYSTEM_PROMPT,
+            input_variables=[],
+            partial_variables={}
         )
 
         # 优化提示模板
         self.optimization_prompt = PromptTemplate(
-            template="""请基于以下信息优化提案：
-
-# 当前提案
-{current_proposal}
-
-# 评估结果
-{evaluation_results}
-
-# 历史改进记录
-{improvement_history}
-
-# 参考资料
-{references}
-
-请重点关注：
-1. 评分较低的部分
-2. 具体的改进建议
-3. 历史改进中的成功经验
-4. 避免重复之前的问题
-
-生成一个优化后的提案版本。""",
+            template=OPTIMIZER_OPTIMIZATION_PROMPT,
             input_variables=["current_proposal", "evaluation_results", "improvement_history", "references"]
         )
 

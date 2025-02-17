@@ -1,42 +1,14 @@
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.prompts import PromptTemplate
-from langchain_core.pydantic_v1 import BaseModel, Field
-from langchain_core.output_parsers import JsonOutputParser
+from pydantic import BaseModel, Field
 from typing import Dict, List, Any, Optional
-from models.base import BaseQwenModel
 from langsmith import traceable
-from .prompts import CRITIC_PROMPTS
+from .prompts import CRITIC_PROMPTS, CRITIC_USER_PROMPT_TEMPLATE
+from proposer.utils import init_custom_chat_model
 import logging
 import json
 
-# 配置日志
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
-class QwenModel(BaseQwenModel):
-    """Critic专用的deepseek-r1模型实现"""
-    def __init__(self, model: str = "qwen-plus", api_version: str = "v1"):
-        super().__init__(model=model, api_version=api_version, agent_name="critic")
-        
-    async def ainvoke(self, messages: List[Any], step_id: str) -> str:
-        """调用Qwen模型，专门用于处理评估任务
-        
-        Args:
-            messages: 消息列表
-            step_id: 步骤ID
-            
-        Returns:
-            str: 模型生成的文本
-            
-        Raises:
-            ValueError: 如果模型调用失败或返回无效响应
-        """
-        return await self._base_ainvoke(
-            messages=messages,
-            step_id=step_id,
-            extra_metadata={"task": "proposal_evaluation"}
-        )
-
 
 class GoalEvaluation(BaseModel):
     """单个目标的评估结果"""
@@ -66,42 +38,22 @@ class CriticAgent:
             focus: 评估重点，可选值：logic, completeness, innovation, feasibility
                   如果为None，则使用默认的通用评估模板
         """
-        self.model = QwenModel(model, api_version)
-        self.output_parser = JsonOutputParser(pydantic_PLACEHOLDER_FOR_SECRET_ID)
+        self.model = init_custom_chat_model(model).with_structured_output(EvaluationResponse)
         self.focus = focus or "default"
         
         if self.focus not in CRITIC_PROMPTS:
             raise ValueError(f"Unsupported focus: {focus}. Must be one of: {list(CRITIC_PROMPTS.keys())}")
         
-        # 打印output_parser的格式说明
-        format_instructions = self.output_parser.get_format_instructions()
-        
         # 定义系统提示模板
         self.system_prompt_template = PromptTemplate(
             template=CRITIC_PROMPTS[self.focus],
-            input_variables=[],
-            partial_variables={"format_instructions": format_instructions}
+            input_variables=[]
         )
         
         # 定义用户提示模板
         self.user_prompt_template = PromptTemplate(
-            template="""请评估以下提案：
-
-问题：{input}
-
-提案内容：
-{proposal_content}
-
-目标：
-{goals_text}
-
-约束条件：
-{constraints_text}
-
-请根据以上内容进行评估。特别关注提案的{focus}方面。
-""",
-            input_variables=["input", "proposal_content", "goals_text", "constraints_text", "focus"],
-            partial_variables={"format_instructions": format_instructions}
+            template=CRITIC_USER_PROMPT_TEMPLATE,
+            input_variables=["input", "proposal_content", "goals_text", "constraints_text", "focus"]
         )
 
     @traceable(name="evaluate_proposal", run_type="chain")
@@ -110,17 +62,15 @@ class CriticAgent:
         input: str,
         proposal_content: str,
         goals: List[str],
-        constraints: List[Dict[str, str]],
-        step_id: Optional[str] = None
+        constraints: List[Dict[str, str]]
     ) -> Dict[str, Any]:
         """评估提案
         
         Args:
             input: 输入问题
-            proposal_content: 提案内容字符串
+            proposal_content: 提案内容
             goals: 目标列表
             constraints: 约束条件列表
-            step_id: 可选的步骤ID
             
         Returns:
             Dict[str, Any]: 评估结果，包含分数、评论和改进建议
@@ -139,28 +89,20 @@ class CriticAgent:
             ))
             
             # 评估提案
-            result = await self.model.ainvoke(
-                messages=[system_msg, user_msg],
-                step_id=step_id or "evaluate_proposal"
+            evaluation = await self.model.ainvoke(
+                input=[system_msg, user_msg]
             )
             
-            try:
-                # 尝试解析评估结果
-                evaluation = self.output_parser.parse(result)
+            # 转换为标准输出格式
+            return {
+                "score": evaluation.overall_score / 10.0,  # 转换为0-1范围
+                "comments": evaluation.overall_feedback,
+                "suggestions": [
+                    f"{goal}: {eval_result.suggestions}"
+                    for goal, eval_result in evaluation.evaluations.items()
+                ]
+            }
 
-                return {
-                    "score": evaluation.get('overall_score', 0) / 10.0,  # 转换为0-1范围
-                    "comments": evaluation.get('overall_feedback', ''),
-                    "suggestions": [
-                        f"{goal}: {eval_result.get('suggestions', '')}"
-                        for goal, eval_result in evaluation.get('evaluations', {}).items()
-                    ]
-                }
-                
-            except Exception as e:
-                logger.error(f"解析评估结果时出错: {e}")
-                raise
-                
         except Exception as e:
             logger.error(f"评估提案时出错: {e}")
             raise
