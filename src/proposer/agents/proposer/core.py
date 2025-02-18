@@ -57,9 +57,6 @@ class ProposerAgent:
             if ref.get("type") == "case":
                 # 处理历史案例
                 formatted_refs.append(f"历史案例 {i+1}:\n{ref['content']}")
-            elif ref.get("type") == "improvement_history":
-                # 处理改进历史
-                formatted_refs.append(f"改进历史:\n{ref['content']}")
             else:
                 # 处理RAG检索的文档
                 formatted_refs.append(
@@ -136,9 +133,9 @@ class ProposerAgent:
             
             # 生成提案
             messages = [system_msg, user_msg]
-            response = await self.model.ainvoke(messages, step_id=step_id or "generate_proposal")
+            response = await self.model.ainvoke(input=messages)
             
-            return response
+            return response.content
             
         except Exception as e:
             logger.error(f"生成提案失败: {e}")
