@@ -1,23 +1,20 @@
 OPTIMIZER_SYSTEM_PROMPT = """您是提案优化专家。基于评估历史和改进建议，生成一个优化后的提案版本。"""
 
-OPTIMIZER_ANALYSIS_PROMPT = """请分析以下提案、评估结果和历史改进记录：
+ANALYSIS_SYSTEM_PROMPT = """根据评估结果分析提案的关键问题和建议。"""
 
-# 当前提案
-{current_proposal}
+OPTIMIZER_ANALYSIS_PROMPT = """请分析评估结果：
 
 # 评估结果
 {evaluation_results}
 
-# 历史改进记录
-{improvement_history}
+请分析以下几个方面：
+1. 主要问题和不足
+2. 改进方向和建议
+3. 需要优化的关键点
 
-请提供以下分析：
-1. 识别关键问题：找出评分较低的维度和主要问题点
-2. 汇总改进建议：整理各维度的具体改进建议
-3. 总结历史经验：提取历史改进中的成功经验和需要避免的问题
-"""
+请给出结构化的分析结果。"""
 
-OPTIMIZER_OPTIMIZATION_PROMPT = """请基于以下信息优化提案：
+OPTIMIZER_OPTIMIZATION_PROMPT = """基于以上分析，请优化提案。
 
 # 当前提案
 {current_proposal}
@@ -32,6 +29,5 @@ OPTIMIZER_OPTIMIZATION_PROMPT = """请基于以下信息优化提案：
 1. 针对每个关键问题进行改进
 2. 采纳相关的具体建议
 3. 参考成功经验
-4. 确保改进不会引入新问题
 
 生成一个优化后的提案版本。"""
