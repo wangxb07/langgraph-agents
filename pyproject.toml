@@ -17,6 +17,7 @@ dependencies = [
     "pydantic>=2.0.0",  # 升级到 Pydantic v2
     "pydantic-core>=2.0.0",  # 添加 pydantic-core
     "langchain-dashscope>=0.0.6",  # 添加 langchain-dashscope
+    "langchain-chroma>=0.0.1",  # 添加 langchain-chroma
 ]
 
 
