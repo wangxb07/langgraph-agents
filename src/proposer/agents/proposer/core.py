@@ -35,13 +35,13 @@ class ProposerAgent:
         # 定义用户提示模板（基础版本）
         self.base_prompt = PromptTemplate(
             template=PROPOSER_BASE_PROMPT,
-            input_variables=["input"]
+            input_variables=["input", "goals_text", "constraints_text"]
         )
         
         # 定义用户提示模板（RAG增强版本）
         self.rag_prompt = PromptTemplate(
             template=PROPOSER_RAG_PROMPT,
-            input_variables=["input", "references_text"]
+            input_variables=["input", "goals_text", "constraints_text", "references_text"]
         )
         
     def _format_references(self, references: List[Dict[str, Any]]) -> str:
@@ -115,6 +115,10 @@ class ProposerAgent:
             # 验证输入
             self._validate_input(input, constraints, goals)
             
+            # 格式化目标和约束条件
+            goals_text = "\n".join(f"- {goal}" for goal in goals)
+            constraints_text = "\n".join(f"- {c['type']}: {c['value']}" for c in constraints)
+            
             # 准备系统消息
             system_msg = SystemMessage(content=self.system_prompt.format())
             
@@ -124,11 +128,17 @@ class ProposerAgent:
                 references_text = self._format_references(references)
                 user_msg = HumanMessage(content=self.rag_prompt.format(
                     input=input,
+                    goals_text=goals_text,
+                    constraints_text=constraints_text,
                     references_text=references_text
                 ))
             else:
                 # 使用基础版本的提示
-                user_msg = HumanMessage(content=self.base_prompt.format(input=input))
+                user_msg = HumanMessage(content=self.base_prompt.format(
+                    input=input,
+                    goals_text=goals_text,
+                    constraints_text=constraints_text
+                ))
             
             # 生成提案
             messages = [system_msg, user_msg]

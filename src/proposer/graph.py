@@ -1,5 +1,6 @@
 from typing import Dict, List, Any, Optional, Tuple, Union, Sequence
 from typing_extensions import Annotated
+from langchain_core.runnables import RunnableConfig
 from langgraph.graph import StateGraph, END
 from langgraph.types import interrupt, Command
 from langgraph.checkpoint.memory import MemorySaver
@@ -9,6 +10,7 @@ import uuid
 from proposer.agents.proposer.core import ProposerAgent
 from proposer.agents.critic.core import CriticAgent
 from proposer.agents.optimizer.core import OptimizerAgent
+from proposer.configuration import Configuration
 
 logger = logging.getLogger(__name__)
 
@@ -18,7 +20,6 @@ class ProposalInput:
     input: str
     constraints: List[Dict[str, str]]
     goals: List[str]
-    references: Optional[List[Dict[str, Any]]] = field(default=None)
 
 
 @dataclass
@@ -29,6 +30,7 @@ class ProposalState(ProposalInput):
     status: str = field(default="init")
     iteration: int = field(default=0)
     max_iterations: int = field(default=3)
+    excellent_score: float = field(default=8.5)
 
     @property
     def current_proposal(self) -> Optional[str]:
@@ -52,19 +54,50 @@ class ProposalWorkflow:
     4. 如果需要优化，返回步骤1进行新一轮迭代
     """
     
-    def __init__(self, 
-                 model: str = "qwen-max",
-                 max_iterations: int = 3):
-        """初始化工作流
+    def __init__(self):
+        """初始化工作流"""
+        self.proposer = None
+        self.critics = {}  # 存储不同focus的评估代理
+        self.optimizer = None
+        self.configuration = None
+    
+    async def _init_agents(self, state: ProposalState, config: RunnableConfig) -> Dict[str, Any]:
+        """初始化代理
         
         Args:
-            model: 使用的模型名称
-            max_iterations: 最大迭代次数
+            state: 当前状态
+            config: 运行时配置
+            
+        Returns:
+            更新后的状态
         """
-        self.proposer = ProposerAgent(model=model)
-        self.critic = CriticAgent(model=model)
-        self.optimizer = OptimizerAgent(model=model)
-        self.max_iterations = max_iterations
+        try:
+            # 从配置中获取参数
+            self.configuration = Configuration.from_runnable_config(config)
+            
+            # 初始化代理
+            self.proposer = ProposerAgent(model=self.configuration.proposer_model)
+            
+            # 初始化多个评估代理，每个关注不同的方面
+            critic_model = self.configuration.critic_model
+            self.critics = {
+                "logic": CriticAgent(model=critic_model, focus="logic"),
+                "completeness": CriticAgent(model=critic_model, focus="completeness"),
+                "innovation": CriticAgent(model=critic_model, focus="innovation"),
+                "feasibility": CriticAgent(model=critic_model, focus="feasibility")
+            }
+            
+            self.optimizer = OptimizerAgent(model=self.configuration.optimizer_model)
+            
+            # 更新状态中的配置参数
+            state.max_iterations = self.configuration.max_iterations
+            state.excellent_score = self.configuration.excellent_score
+            
+            return state.__dict__
+        
+        except Exception as e:
+            logger.error(f"初始化代理失败: {str(e)}")
+            raise
     
     async def _wait_user_feedback(self, state: ProposalState) -> Dict[str, Any]:
         """等待用户对评估结果的反馈
@@ -132,15 +165,14 @@ class ProposalWorkflow:
                 proposal = await self.proposer.generate(
                     input=current_state.input,
                     constraints=current_state.constraints,
-                    goals=current_state.goals,
-                    references=current_state.references
+                    goals=current_state.goals
                 )
             else:
                 # 优化现有提案
                 proposal = await self.optimizer.optimize_proposal(
                     current_proposal=current_state.current_proposal,
                     evaluations=current_state.evaluations,
-                    references=current_state.references
+                    references=None
                 )
             
             # 更新状态
@@ -166,16 +198,41 @@ class ProposalWorkflow:
         try:
             current_state = state
             
-            # 对提案进行评估
-            evaluation = await self.critic.evaluate_proposal(
-                input=current_state.input,
-                proposal_content=current_state.current_proposal,  # 使用最新的提案
-                goals=current_state.goals,
-                constraints=current_state.constraints
-            )
+            # 使用多个评估代理对提案进行多维度评估
+            evaluation_results = {}
+            
+            # 对每个维度进行评估
+            for focus, critic in self.critics.items():
+                result = await critic.evaluate_proposal(
+                    input=current_state.input,
+                    proposal_content=current_state.current_proposal,
+                    goals=current_state.goals,
+                    constraints=current_state.constraints
+                )
+                evaluation_results[focus] = result
+            
+            # 计算综合评分（各维度的平均值）
+            overall_score = sum(result["score"] for result in evaluation_results.values()) / len(evaluation_results)
+            
+            # 整合评估结果
+            combined_evaluation = {
+                "score": overall_score,
+                "dimensions": evaluation_results,
+                "comments": "多维度评估结果汇总：\n" + "\n".join([
+                    f"- {focus}：{result['comments']}" 
+                    for focus, result in evaluation_results.items()
+                ]),
+                "suggestions": []
+            }
+            
+            # 整合所有维度的建议
+            for focus, result in evaluation_results.items():
+                combined_evaluation["suggestions"].extend([
+                    f"[{focus}] {suggestion}" for suggestion in result.get("suggestions", [])
+                ])
             
             # 更新状态
-            current_state.evaluations.append(evaluation)
+            current_state.evaluations.append(combined_evaluation)
             current_state.status = "evaluated"
             
             return current_state.__dict__
@@ -201,7 +258,7 @@ class ProposalWorkflow:
             if state.iteration >= state.max_iterations:
                 # 达到最大迭代次数
                 state.status = "completed"
-            elif latest_evaluation["score"] >= 8.5:
+            elif latest_evaluation["score"] >= state.excellent_score:
                 # 评分达到优秀标准
                 state.status = "completed"
             else:
@@ -220,17 +277,19 @@ class ProposalWorkflow:
         Returns:
             编译后的工作流图
         """
-        workflow = StateGraph(ProposalState, input=ProposalInput)
+        workflow = StateGraph(ProposalState, input=ProposalInput, config_PLACEHOLDER_FOR_SECRET_ID)
         
         # 添加节点
+        workflow.add_node("init_agents", self._init_agents)
         workflow.add_node("propose", self._generate_proposal)
         workflow.add_node("evaluate", self._evaluate_proposal)
         workflow.add_node("arbitrate", self._arbitrate)
         
         # 设置工作流程
-        workflow.set_entry_point("propose")
+        workflow.set_entry_point("init_agents")
         
         # 添加边
+        workflow.add_edge("init_agents", "propose")
         workflow.add_edge("propose", "evaluate")
         workflow.add_edge("evaluate", "arbitrate")
         
@@ -253,42 +312,6 @@ class ProposalWorkflow:
         
         return workflow
 
-    async def run(self, 
-                  input: str,
-                  constraints: List[Dict[str, str]],
-                  goals: List[str],
-                  references: Optional[List[Dict[str, Any]]] = None) -> Dict[str, Any]:
-        """运行工作流
-        
-        Args:
-            input: 输入信息
-            constraints: 约束条件列表
-            goals: 目标列表
-            references: 可选的参考资料
-            
-        Returns:
-            工作流执行结果
-        """
-        # 准备初始状态
-        initial_state = ProposalState(
-            input=input,
-            PLACEHOLDER_FOR_SECRET_ID,
-            goals=goals,
-            PLACEHOLDER_FOR_SECRET_ID,
-            max_iterations=self.max_iterations
-        )
-        
-        # 创建并运行工作流
-        graph = self.create_graph()
-        
-        # 配置线程 ID
-        thread_id = str(uuid.uuid4())
-        thread_config = {"configurable": {"thread_id": thread_id}}
-        
-        # 运行工作流
-        final_state = await graph.arun(initial_state.__dict__, config=thread_config)
-        
-        return final_state
 
 def create_graph():
     """创建提案工作流图
@@ -296,5 +319,5 @@ def create_graph():
     Returns:
         编译后的工作流图
     """
-    workflow = ProposalWorkflow(model="qwen-max", max_iterations=3)
+    workflow = ProposalWorkflow()
     return workflow.create_graph()
