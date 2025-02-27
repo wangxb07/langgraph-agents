@@ -6,6 +6,7 @@ from proposer.utils import init_custom_chat_model
 from .prompts import PROPOSER_SYSTEM_PROMPT, PROPOSER_BASE_PROMPT, PROPOSER_RAG_PROMPT
 import logging
 from langsmith import traceable
+from proposer.tools import TOOLS
 
 logger = logging.getLogger(__name__)
 
@@ -22,12 +23,12 @@ class ProposerAgent:
             model: 模型名称
             api_version: API版本
         """
-        self.model = init_custom_chat_model(model)
+        self.model = init_custom_chat_model(model).bind_tools(TOOLS)
         
         # 定义系统提示模板
         self.system_prompt = PromptTemplate(
             template=PROPOSER_SYSTEM_PROMPT,
-            input_variables=["input"],
+            input_variables=[],
             partial_variables={}
         )
         
@@ -115,9 +116,7 @@ class ProposerAgent:
             self._validate_input(input, constraints, goals)
             
             # 准备系统消息
-            system_msg = SystemMessage(content=self.system_prompt.format(
-                input=input
-            ))
+            system_msg = SystemMessage(content=self.system_prompt.format())
             
             # 准备用户消息
             if references:

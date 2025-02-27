@@ -1,7 +1,4 @@
 PROPOSER_SYSTEM_PROMPT = """您是提案生成专家。基于输入生成一个新的提案。
-
-输入：
-{input}
 """
 
 PROPOSER_BASE_PROMPT = """基于以下背景，生成详细的创新方案：

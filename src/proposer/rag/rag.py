@@ -2,7 +2,7 @@ import os
 import logging
 import shutil
 from typing import List, Dict, Any, Optional
-
+from langchain.schema import Document
 from langchain.text_splitter import PLACEHOLDER_FOR_SECRET_ID
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
@@ -10,6 +10,7 @@ from langchain_chroma import Chroma
 
 from .embeddings import DashScopeEmbeddings
 from .rag_model import RAGQwenModel
+from .document_processor import DocumentProcessor
 
 logger = logging.getLogger(__name__)
 
@@ -30,7 +31,7 @@ class RAGTool:
     
     def __init__(
         self,
-        document_processor: 'DocumentProcessor',  # 假设 DocumentProcessor 已在其他地方定义
+        document_processor: DocumentProcessor,  
         embedding_model: str = "text-embedding-v2",
         prompt_template: str = DEFAULT_PROMPT_TEMPLATE
     ):
@@ -61,8 +62,13 @@ class RAGTool:
         # 初始化或加载向量数据库
         self.vectorstore = self._init_vectorstore()
         
-        # 加载并索引文档目录中的文件
-        self.document_processor.load_and_index_files()
+        # 加载并索引文档，使用向量存储回调
+        def vector_store_callback(splits: List[Document]):
+            self.vectorstore.add_documents(splits)
+            
+        self.document_processor.load_and_index_files(
+            processing_callback=vector_store_callback
+        )
         
         # 初始化检索链
         self.qa_chain = self._init_qa_chain(prompt_template)
