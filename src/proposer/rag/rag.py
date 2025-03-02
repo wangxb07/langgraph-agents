@@ -61,14 +61,16 @@ class RAGTool:
         
         # 初始化或加载向量数据库
         self.vectorstore = self._init_vectorstore()
+        self.need_index_docs = False
         
         # 加载并索引文档，使用向量存储回调
         def vector_store_callback(splits: List[Document]):
             self.vectorstore.add_documents(splits)
             
-        self.document_processor.load_and_index_files(
-            processing_callback=vector_store_callback
-        )
+        if self.need_index_docs:
+            self.document_processor.load_and_index_files(
+                processing_callback=vector_store_callback
+            )
         
         # 初始化检索链
         self.qa_chain = self._init_qa_chain(prompt_template)
@@ -77,9 +79,14 @@ class RAGTool:
         """初始化向量数据库"""
         persist_directory = self.vector_store_dir
         
-        # 删除旧的向量数据库
-        if os.path.exists(persist_directory):
-            logger.info(f"删除旧的向量数据库：{persist_directory}")
+        # 检查是否需要重新创建向量数据库
+        recreate = False
+        if not os.path.exists(persist_directory):
+            recreate = True
+            logger.info(f"向量数据库目录不存在，将创建新的向量数据库：{persist_directory}")
+        elif os.environ.get("RAG_FORCE_RECREATE_VECTOR_DB", "").lower() in ("true", "1", "yes"):
+            recreate = True
+            logger.info(f"强制重新创建向量数据库：{persist_directory}")
             shutil.rmtree(persist_directory)
         
         # 初始化向量数据库
@@ -87,6 +94,9 @@ class RAGTool:
             persist_directory=persist_directory,
             embedding_function=self.embeddings
         )
+        
+        # 如果是新创建的，需要加载文档
+        self.need_index_docs = recreate
         
         return vectorstore
 
@@ -179,12 +189,13 @@ class RAGTool:
         seen_doc_ids = set()
         
         for doc in docs:
-            doc_id = doc.metadata["doc_id"]
+            # 兼容不同的ID字段名称
+            doc_id = doc.metadata.get("doc_id") or doc.metadata.get("id") or doc.metadata.get("Key", "unknown")
             
             if doc_id in seen_doc_ids:
                 continue
                 
-            if category and doc.metadata["category"] != category:
+            if category and doc.metadata.get("category") != category:
                 continue
                 
             if tags:

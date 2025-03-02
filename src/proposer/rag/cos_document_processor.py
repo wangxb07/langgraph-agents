@@ -83,14 +83,35 @@ class PLACEHOLDER_FOR_SECRET_ID:
                 logger.info(f"处理文档: {key}")
                 logger.debug(f"文档元数据: {doc.metadata}")
 
-                # 设置基本元数据
+                # 设置基本元数据 - 确保所有值都是有效类型（str, int, float, bool）
+                # 为了避免中文文件名可能导致的问题，为每个文档生成一个唯一ID
+                doc_id = f"doc_{os.urandom(4).hex()}"
+                
+                # 从文件名中提取标题，处理可能的中文字符
+                filename = os.path.basename(key)
+                title = filename.replace('.md', '').replace('.txt', '')
+                
                 doc.metadata.update({
+                    'id': doc_id,
                     'Key': key,
                     'source': f"cos://{self.bucket}/{key}",
                     'type': 'markdown' if key.endswith('.md') else 'text',
                     'bucket': self.bucket,
-                    'created_at': None  # 如果需要，可以从COS获取实际的创建时间
+                    'created_at': "unknown",  # 使用字符串而不是None
+                    'title': title,
+                    'filename': filename
                 })
+                
+                # 清理元数据中的None值和可能导致问题的值
+                for k in list(doc.metadata.keys()):
+                    if doc.metadata[k] is None:
+                        doc.metadata[k] = "unknown"
+                    # 确保所有值都是基本类型
+                    if not isinstance(doc.metadata[k], (str, int, float, bool)):
+                        try:
+                            doc.metadata[k] = str(doc.metadata[k])
+                        except:
+                            doc.metadata[k] = "unknown"
             
             headers_to_split_on = [("#", "Header 1"), ("##", "Header 2")]
             text_splitter = PLACEHOLDER_FOR_SECRET_ID(headers_to_split_on=headers_to_split_on)
@@ -103,10 +124,20 @@ class PLACEHOLDER_FOR_SECRET_ID:
                     
                     # 确保每个分割后的文档都有正确的元数据
                     for split in splits:
-                        split.metadata.update(doc.metadata)
+                        # 复制元数据并确保没有None值
+                        clean_metadata = {}
+                        for k, v in doc.metadata.items():
+                            if v is None:
+                                clean_metadata[k] = "unknown"
+                            else:
+                                clean_metadata[k] = v
+                        
+                        split.metadata.update(clean_metadata)
                     
                     processing_callback(splits)
-                    logger.info(f"文档片段内容: {split.page_content}")
+                    
+                    if splits:
+                        logger.info(f"文档片段示例内容: {splits[0].page_content[:100]}...")
 
                     logger.info(f"已处理文档片段：{doc.metadata['source']}, 生成 {len(splits)} 个片段")
                 except Exception as e:
@@ -115,7 +146,7 @@ class PLACEHOLDER_FOR_SECRET_ID:
                     
             logger.info(f"文档处理完成，共处理 {total_chunks} 个文档片段")
         except Exception as e:
-            logger.error(f"加载文档时发生错误: {str(e)}")
+            logger.error(f"加载文档时发生错误: {str(e)}", exc_info=True)
             raise
     
     def clear_all(self) -> None:

@@ -6,7 +6,6 @@ from proposer.utils import init_custom_chat_model
 from .prompts import PROPOSER_SYSTEM_PROMPT, PROPOSER_BASE_PROMPT, PROPOSER_RAG_PROMPT
 import logging
 from langsmith import traceable
-from proposer.tools import TOOLS
 
 logger = logging.getLogger(__name__)
 
@@ -23,7 +22,7 @@ class ProposerAgent:
             model: 模型名称
             api_version: API版本
         """
-        self.model = init_custom_chat_model(model).bind_tools(TOOLS)
+        self.model = init_custom_chat_model(model)
         
         # 定义系统提示模板
         self.system_prompt = PromptTemplate(
@@ -77,13 +76,7 @@ class ProposerAgent:
             
         Raises:
             ValueError: 如果输入参数无效
-        """
-        if not isinstance(goals, list):
-            raise ValueError("goals must be a list")
-        
-        if not isinstance(constraints, list):
-            raise ValueError("constraints must be a list")
-        
+        """        
         for constraint in constraints:
             if not isinstance(constraint, dict):
                 raise ValueError("each constraint must be a dictionary")
@@ -96,8 +89,7 @@ class ProposerAgent:
         input: str,
         constraints: List[Dict],
         goals: List[str],
-        references: Optional[List[Dict[str, Any]]] = None,
-        step_id: Optional[str] = None
+        references: Optional[List[Dict[str, Any]]] = None
     ) -> str:
         """生成提案
         
@@ -106,7 +98,6 @@ class ProposerAgent:
             constraints: 约束条件列表
             goals: 目标列表
             references: 可选的参考资料列表
-            step_id: 可选的步骤ID
             
         Returns:
             生成的提案文本

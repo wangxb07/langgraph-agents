@@ -83,7 +83,6 @@ class ProposalWorkflow:
             self.critics = {
                 "logic": CriticAgent(model=critic_model, focus="logic"),
                 "completeness": CriticAgent(model=critic_model, focus="completeness"),
-                "innovation": CriticAgent(model=critic_model, focus="innovation"),
                 "feasibility": CriticAgent(model=critic_model, focus="feasibility")
             }
             
@@ -160,19 +159,33 @@ class ProposalWorkflow:
         try:
             current_state = state
             
+            # 自动从 RAG 中检索相关文档
+            from proposer.tools import get_rag_tool
+            rag_tool = get_rag_tool()
+            references = []
+            retrieved_docs = rag_tool.retrieve(current_state.input)
+            
+            for doc in retrieved_docs:
+                references.append({
+                    "type": "document",
+                    "content": doc["content"],
+                    "metadata": doc["metadata"]
+                })
+            
             if not current_state.proposals:
                 # 首次生成提案
                 proposal = await self.proposer.generate(
                     input=current_state.input,
                     constraints=current_state.constraints,
-                    goals=current_state.goals
+                    goals=current_state.goals,
+                    PLACEHOLDER_FOR_SECRET_ID  # 传入检索到的参考资料
                 )
             else:
                 # 优化现有提案
                 proposal = await self.optimizer.optimize_proposal(
                     current_proposal=current_state.current_proposal,
                     evaluations=current_state.evaluations,
-                    references=None
+                    PLACEHOLDER_FOR_SECRET_ID  # 传入检索到的参考资料
                 )
             
             # 更新状态
