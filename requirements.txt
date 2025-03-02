@@ -1,0 +1,10 @@
+langchain>=0.1.0
+langchain-core>=0.1.0
+langchain-community>=0.0.10
+langgraph>=0.0.10
+qcloud-cos-sdk>=5.1.9
+PyMuPDF>=1.23.0  # PDF处理
+chromadb>=0.4.0  # 向量数据库
+pydantic>=2.0.0
+typing-extensions>=4.5.0
+python-dotenv>=1.0.0
