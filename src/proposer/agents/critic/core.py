@@ -13,13 +13,11 @@ logger = logging.getLogger(__name__)
 class GoalEvaluation(BaseModel):
     """单个目标的评估结果"""
     score: float = Field(description="Score between 1-10")
-    feedback: str = Field(description="Detailed feedback explaining the score")
     suggestions: str = Field(description="Improvement suggestions")
 
 class EvaluationResponse(BaseModel):
     """完整的评估响应"""
     evaluations: Dict[str, GoalEvaluation] = Field(description="Evaluation results for each goal")
-    overall_feedback: str = Field(description="Overall synthesis of the evaluation")
     overall_score: float = Field(description="Overall score between 1-10")
 
 class CriticAgent:
@@ -73,7 +71,7 @@ class CriticAgent:
             constraints: 约束条件列表
             
         Returns:
-            Dict[str, Any]: 评估结果，包含分数、评论和改进建议
+            Dict[str, Any]: 评估结果，包含分数和改进建议
         """
         try:
             # 准备系统消息
@@ -96,7 +94,6 @@ class CriticAgent:
             # 转换为标准输出格式
             return {
                 "score": evaluation.overall_score / 10.0,  # 转换为0-1范围
-                "comments": evaluation.overall_feedback,
                 "suggestions": [
                     f"{goal}: {eval_result.suggestions}"
                     for goal, eval_result in evaluation.evaluations.items()

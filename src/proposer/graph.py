@@ -54,12 +54,17 @@ class ProposalWorkflow:
     4. 如果需要优化，返回步骤1进行新一轮迭代
     """
     
-    def __init__(self):
-        """初始化工作流"""
+    def __init__(self, max_iterations: int = 3):
+        """初始化工作流
+        
+        Args:
+            max_iterations: 最大迭代次数
+        """
         self.proposer = None
         self.critics = {}  # 存储不同focus的评估代理
         self.optimizer = None
         self.configuration = None
+        self.max_iterations = max_iterations
     
     async def _init_agents(self, state: ProposalState, config: RunnableConfig) -> Dict[str, Any]:
         """初始化代理
