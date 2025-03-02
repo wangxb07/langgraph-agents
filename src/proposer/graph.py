@@ -232,7 +232,7 @@ class ProposalWorkflow:
                 "score": overall_score,
                 "dimensions": evaluation_results,
                 "comments": "多维度评估结果汇总：\n" + "\n".join([
-                    f"- {focus}：{result['comments']}" 
+                    f"- {focus}：{result.get('comments', f'评分: {result[\"score\"]:.1f}')}" 
                     for focus, result in evaluation_results.items()
                 ]),
                 "suggestions": []
