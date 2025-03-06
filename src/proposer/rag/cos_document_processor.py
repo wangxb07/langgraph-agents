@@ -5,12 +5,12 @@ import tempfile
 from typing import List, Dict, Any, Callable, Optional
 from langchain.schema import Document
 from qcloud_cos import CosConfig, CosS3Client
-from langchain_text_splitters import PLACEHOLDER_FOR_SECRET_ID, PLACEHOLDER_FOR_SECRET_ID
+from langchain_text_splitters import MarkdownTextSplitter, RecursiveCharacterTextSplitter
 from .pdf_processor import PDFProcessor
 
 logger = logging.getLogger(__name__)
 
-class PLACEHOLDER_FOR_SECRET_ID:
+class COSDocumentProcessor:
     """基于腾讯云 COS 的 DocumentProcessor 实现"""
     
     def __init__(self, secret_id: str, secret_key: str, region: str, bucket: str):
@@ -76,9 +76,9 @@ class PLACEHOLDER_FOR_SECRET_ID:
             # 根据文件类型选择不同的分割器
             splits = []
             
-            # 对Markdown文件使用PLACEHOLDER_FOR_SECRET_ID
+            # 对Markdown文件使用MarkdownTextSplitter
             if ext == '.md':
-                logger.info(f"使用PLACEHOLDER_FOR_SECRET_ID处理Markdown文件: {key}")
+                logger.info(f"使用MarkdownTextSplitter处理Markdown文件: {key}")
                 
                 # 定义Markdown标题层级
                 headers_to_split_on = [
@@ -89,15 +89,15 @@ class PLACEHOLDER_FOR_SECRET_ID:
                 ]
                 
                 # 使用Markdown专用分割器
-                md_splitter = PLACEHOLDER_FOR_SECRET_ID(headers_to_split_on=headers_to_split_on)
+                md_splitter = MarkdownTextSplitter(headers_to_split_on=headers_to_split_on)
                 md_splits = md_splitter.split_text(text)
                 
                 # 如果Markdown分割器没有产生分割（可能没有标题），则使用通用分割器作为后备
                 if md_splits:
                     splits = md_splits
                 else:
-                    logger.info(f"Markdown文件没有标题，使用PLACEHOLDER_FOR_SECRET_ID作为后备: {key}")
-                    text_splitter = PLACEHOLDER_FOR_SECRET_ID(
+                    logger.info(f"Markdown文件没有标题，使用RecursiveCharacterTextSplitter作为后备: {key}")
+                    text_splitter = RecursiveCharacterTextSplitter(
                         chunk_size=1800,
                         chunk_overlap=200,
                         length_function=len,
@@ -106,8 +106,8 @@ class PLACEHOLDER_FOR_SECRET_ID:
                     splits = text_splitter.create_documents([text])
             else:
                 # 对其他文本文件使用通用分割器
-                logger.info(f"使用PLACEHOLDER_FOR_SECRET_ID处理文本文件: {key}")
-                text_splitter = PLACEHOLDER_FOR_SECRET_ID(
+                logger.info(f"使用RecursiveCharacterTextSplitter处理文本文件: {key}")
+                text_splitter = RecursiveCharacterTextSplitter(
                     chunk_size=1800,
                     chunk_overlap=200,
                     length_function=len,

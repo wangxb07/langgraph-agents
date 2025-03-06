@@ -2,7 +2,7 @@ import pytest
 import logging
 import os
 from langchain.schema import Document
-from proposer.rag.cos_document_processor import PLACEHOLDER_FOR_SECRET_ID
+from proposer.rag.cos_document_processor import COSDocumentProcessor
 
 # 设置日志
 logging.basicConfig(level=logging.DEBUG)
@@ -21,7 +21,7 @@ def cos_processor():
     if not secret_id or not secret_key:
         pytest.skip("TENCENT_COS_SECRET_ID 和 TENCENT_COS_SECRET_KEY 环境变量未设置")
     
-    processor = PLACEHOLDER_FOR_SECRET_ID(
+    processor = COSDocumentProcessor(
         secret_id=secret_id,
         secret_key=secret_key,
         region=region,
@@ -29,8 +29,8 @@ def cos_processor():
     )
     return processor
 
-class PLACEHOLDER_FOR_SECRET_ID:
-    """PLACEHOLDER_FOR_SECRET_ID 测试类"""
+class TestCOSDocumentProcessor:
+    """COSDocumentProcessor 测试类"""
     def test_load_and_index_files_basic(self, cos_processor):
         """测试基本的文档加载和处理流程"""
         processed_docs = []

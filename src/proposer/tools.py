@@ -8,7 +8,7 @@ from typing import Any, Dict, List, Optional
 import os
 from langchain_core.tools import tool
 from .rag.rag import RAGTool
-from .rag.cos_document_processor import PLACEHOLDER_FOR_SECRET_ID
+from .rag.cos_document_processor import COSDocumentProcessor
 
 # 创建 RAG 工具实例
 _rag_tool = None
@@ -54,7 +54,7 @@ def get_rag_tool(prompt_template: Optional[str] = None) -> RAGTool:
         # 创建 RAG 工具实例
         _rag_tool = RAGTool(
             prompt_template=prompt_template,
-            document_PLACEHOLDER_FOR_SECRET_ID(
+            document_processor=COSDocumentProcessor(
                 secret_id=secret_id,
                 secret_key=secret_key,
                 region=region,
