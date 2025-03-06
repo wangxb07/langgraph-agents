@@ -3,7 +3,7 @@ import logging
 import shutil
 from typing import List, Dict, Any, Optional
 from langchain.schema import Document
-from langchain.text_splitter import PLACEHOLDER_FOR_SECRET_ID, PLACEHOLDER_FOR_SECRET_ID
+from langchain.text_splitter import RecursiveCharacterTextSplitter, MarkdownHeaderTextSplitter
 from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 from langchain_chroma import Chroma
@@ -54,7 +54,7 @@ class RAGTool:
         self.embeddings = DashScopeEmbeddings(model=embedding_model)
         
         # 通用文本分割器
-        self.text_splitter = PLACEHOLDER_FOR_SECRET_ID(
+        self.text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=1800,  # 减小块大小，确保不超过模型的2048字符限制
             chunk_overlap=200,
             length_function=len,
@@ -68,7 +68,7 @@ class RAGTool:
             ("###", "header_3"),
             ("####", "header_4"),
         ]
-        self.markdown_splitter = PLACEHOLDER_FOR_SECRET_ID(headers_to_split_on=self.markdown_headers)
+        self.markdown_splitter = MarkdownHeaderTextSplitter(headers_to_split_on=self.markdown_headers)
         
         # 初始化或加载向量数据库
         self.vectorstore = self._init_vectorstore()

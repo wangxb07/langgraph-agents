@@ -1,12 +1,12 @@
 """DashScope Embeddings 实现"""
 
 from typing import List, Optional
-from langchain_community.embeddings import DashScopeEmbeddings as PLACEHOLDER_FOR_SECRET_ID
+from langchain_community.embeddings import DashScopeEmbeddings as LangchainDashScopeEmbeddings
 import logging
 
 logger = logging.getLogger(__name__)
 
-class DashScopeEmbeddings(PLACEHOLDER_FOR_SECRET_ID):
+class DashScopeEmbeddings(LangchainDashScopeEmbeddings):
     """DashScope Embeddings 实现
     
     使用 DashScope 的文本向量化服务，支持批量处理。

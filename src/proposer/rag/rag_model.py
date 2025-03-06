@@ -1,5 +1,5 @@
 from typing import Any, List, Optional, Mapping
-from langchain.callbacks.manager import PLACEHOLDER_FOR_SECRET_ID
+from langchain.callbacks.manager import CallbackManagerForLLMRun
 from langchain.llms.base import LLM
 from langchain.schema import HumanMessage
 from pydantic.v1 import Field
@@ -35,7 +35,7 @@ class RAGQwenModel(LLM):
         self,
         prompt: str,
         stop: Optional[List[str]] = None,
-        run_manager: Optional[PLACEHOLDER_FOR_SECRET_ID] = None,
+        run_manager: Optional[CallbackManagerForLLMRun] = None,
         **kwargs: Any,
     ) -> str:
         """实现LangChain LLM基类的_call方法

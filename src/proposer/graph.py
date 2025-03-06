@@ -178,14 +178,14 @@ class ProposalWorkflow:
                     input=current_state.input,
                     constraints=current_state.constraints,
                     goals=current_state.goals,
-                    PLACEHOLDER_FOR_SECRET_ID  # 传入检索到的参考资料
+                    references=references  # 传入检索到的参考资料
                 )
             else:
                 # 优化现有提案
                 proposal = await self.optimizer.optimize_proposal(
                     current_proposal=current_state.current_proposal,
                     evaluations=current_state.evaluations,
-                    PLACEHOLDER_FOR_SECRET_ID  # 传入检索到的参考资料
+                    references=references  # 传入检索到的参考资料
                 )
             
             # 更新状态
@@ -286,7 +286,7 @@ class ProposalWorkflow:
         Returns:
             编译后的工作流图
         """
-        workflow = StateGraph(ProposalState, input=ProposalInput, config_PLACEHOLDER_FOR_SECRET_ID)
+        workflow = StateGraph(ProposalState, input=ProposalInput, config_schema=Configuration)
         
         # 添加节点
         workflow.add_node("init_agents", self._init_agents)
@@ -317,7 +317,7 @@ class ProposalWorkflow:
         
         # 添加 checkpointer 支持 interrupt
         checkpointer = MemorySaver()
-        workflow = workflow.compile(PLACEHOLDER_FOR_SECRET_ID)
+        workflow = workflow.compile(checkpointer=checkpointer)
         
         return workflow
 

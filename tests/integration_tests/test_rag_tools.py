@@ -7,7 +7,7 @@ from proposer.utils import init_custom_chat_model
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-class PLACEHOLDER_FOR_SECRET_ID:
+class TestRAGTools:
     """RAG工具集成测试类"""
     
     @pytest.mark.integration

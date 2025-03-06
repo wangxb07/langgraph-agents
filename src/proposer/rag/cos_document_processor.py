@@ -5,12 +5,12 @@ import tempfile
 from typing import List, Dict, Any, Callable, Optional
 from langchain.schema import Document
 from qcloud_cos import CosConfig, CosS3Client
-from langchain_text_splitters import MarkdownTextSplitter, RecursiveCharacterTextSplitter
+from langchain_text_splitters import MarkdownHeaderTextSplitter, RecursiveCharacterTextSplitter
 from .pdf_processor import PDFProcessor
 
 logger = logging.getLogger(__name__)
 
-class COSDocumentProcessor:
+class TencentCOSDocumentProcessor:
     """基于腾讯云 COS 的 DocumentProcessor 实现"""
     
     def __init__(self, secret_id: str, secret_key: str, region: str, bucket: str):
@@ -76,9 +76,9 @@ class COSDocumentProcessor:
             # 根据文件类型选择不同的分割器
             splits = []
             
-            # 对Markdown文件使用MarkdownTextSplitter
+            # 对Markdown文件使用MarkdownHeaderTextSplitter
             if ext == '.md':
-                logger.info(f"使用MarkdownTextSplitter处理Markdown文件: {key}")
+                logger.info(f"使用MarkdownHeaderTextSplitter处理Markdown文件: {key}")
                 
                 # 定义Markdown标题层级
                 headers_to_split_on = [
@@ -89,7 +89,7 @@ class COSDocumentProcessor:
                 ]
                 
                 # 使用Markdown专用分割器
-                md_splitter = MarkdownTextSplitter(headers_to_split_on=headers_to_split_on)
+                md_splitter = MarkdownHeaderTextSplitter(headers_to_split_on=headers_to_split_on)
                 md_splits = md_splitter.split_text(text)
                 
                 # 如果Markdown分割器没有产生分割（可能没有标题），则使用通用分割器作为后备

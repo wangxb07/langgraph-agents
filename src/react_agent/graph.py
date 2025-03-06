@@ -68,7 +68,7 @@ async def call_model(
 
 # Define a new graph
 
-builder = StateGraph(State, input=InputState, config_PLACEHOLDER_FOR_SECRET_ID)
+builder = StateGraph(State, input=InputState, config_schema=Configuration)
 
 # Define the two nodes we will cycle between
 builder.add_node(call_model)
