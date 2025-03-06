@@ -6,12 +6,16 @@ consider implementing more robust and specialized tools tailored to your needs.
 
 from typing import Any, Dict, List, Optional
 import os
+from dotenv import load_dotenv
+
 from langchain_core.tools import tool
 from .rag.rag import RAGTool
 from .rag.cos_document_processor import TencentCOSDocumentProcessor
 
 # 创建 RAG 工具实例
 _rag_tool = None
+
+load_dotenv()
 
 def get_rag_tool(prompt_template: Optional[str] = None) -> RAGTool:
     """获取或创建 RAG 工具实例
