@@ -5,6 +5,7 @@ consider implementing more robust and specialized tools tailored to your needs.
 """
 
 from typing import Any, Dict, List, Optional
+import os
 from langchain_core.tools import tool
 from .rag.rag import RAGTool
 from .rag.cos_document_processor import PLACEHOLDER_FOR_SECRET_ID
@@ -40,14 +41,24 @@ def get_rag_tool(prompt_template: Optional[str] = None) -> RAGTool:
 
 请回答："""
         
+        # 获取环境变量中的 Tencent COS 凭证
+        secret_id = os.getenv("TENCENT_COS_SECRET_ID")
+        secret_key = os.getenv("TENCENT_COS_SECRET_KEY")
+        region = os.getenv("TENCENT_COS_REGION", "ap-shanghai")
+        bucket = os.getenv("TENCENT_COS_BUCKET", "rag-1309172277")
+        
+        # 检查必要的凭证是否存在
+        if not secret_id or not secret_key:
+            raise ValueError("TENCENT_COS_SECRET_ID 和 TENCENT_COS_SECRET_KEY 环境变量必须设置")
+        
         # 创建 RAG 工具实例
         _rag_tool = RAGTool(
             prompt_template=prompt_template,
             document_PLACEHOLDER_FOR_SECRET_ID(
-                secret_id="PLACEHOLDER_FOR_SECRET_ID",
-                secret_key="PLACEHOLDER_FOR_SECRET_ID",
-                region="ap-shanghai",
-                bucket="rag-1309172277"
+                secret_id=secret_id,
+                secret_key=secret_key,
+                region=region,
+                bucket=bucket
             )
         )
     
