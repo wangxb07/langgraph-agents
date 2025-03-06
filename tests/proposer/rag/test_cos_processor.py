@@ -1,5 +1,6 @@
 import pytest
 import logging
+import os
 from langchain.schema import Document
 from proposer.rag.cos_document_processor import PLACEHOLDER_FOR_SECRET_ID
 
@@ -10,11 +11,21 @@ logger = logging.getLogger(__name__)
 @pytest.fixture
 def cos_processor():
     """创建COS处理器"""
+    # 从环境变量获取凭证
+    secret_id = os.getenv("TENCENT_COS_SECRET_ID")
+    secret_key = os.getenv("TENCENT_COS_SECRET_KEY")
+    region = os.getenv("TENCENT_COS_REGION", "ap-shanghai")
+    bucket = os.getenv("TENCENT_COS_BUCKET", "rag-1309172277")
+    
+    # 检查必要的凭证是否存在
+    if not secret_id or not secret_key:
+        pytest.skip("TENCENT_COS_SECRET_ID 和 TENCENT_COS_SECRET_KEY 环境变量未设置")
+    
     processor = PLACEHOLDER_FOR_SECRET_ID(
-        secret_id="PLACEHOLDER_FOR_SECRET_ID",
-        secret_key="PLACEHOLDER_FOR_SECRET_ID",
-        region="ap-shanghai",
-        bucket="rag-1309172277"
+        secret_id=secret_id,
+        secret_key=secret_key,
+        region=region,
+        bucket=bucket
     )
     return processor
 
