@@ -30,11 +30,12 @@ requires = ["setuptools>=73.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = ["langgraph.templates.react_agent", "react_agent", "proposer"]
+packages = ["langgraph.templates.react_agent", "react_agent", "proposer", "rag"]
 [tool.setuptools.package-dir]
 "langgraph.templates.react_agent" = "src/react_agent"
 "react_agent" = "src/react_agent"
 "proposer" = "src/proposer"
+"rag" = "src/rag"
 
 [tool.setuptools.package-data]
 "*" = ["py.typed"]

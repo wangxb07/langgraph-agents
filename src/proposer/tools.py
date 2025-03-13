@@ -9,8 +9,8 @@ import os
 from dotenv import load_dotenv
 
 from langchain_core.tools import tool
-from .rag.rag import RAGTool
-from .rag.cos_document_processor import TencentCOSDocumentProcessor
+from rag.rag import RAGTool
+from rag.cos_document_processor import TencentCOSDocumentProcessor
 
 # 创建 RAG 工具实例
 _rag_tool = None

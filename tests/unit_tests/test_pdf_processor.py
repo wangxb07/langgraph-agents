@@ -1,7 +1,7 @@
 """测试PDF处理器"""
 import os
 import pytest
-from proposer.rag.pdf_processor import PDFProcessor
+from rag.pdf_processor import PDFProcessor
 
 @pytest.fixture
 def sample_pdf_path(tmp_path):
