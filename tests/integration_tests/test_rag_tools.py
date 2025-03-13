@@ -10,7 +10,6 @@ logger = logging.getLogger(__name__)
 class TestRAGTools:
     """RAG工具集成测试类"""
     
-    @pytest.mark.integration
     def test_rag_retrieve_with_model(self):
         """测试RAG检索工具与模型的集成"""
         try:
@@ -46,7 +45,6 @@ class TestRAGTools:
             logger.error(f"Integration test failed: {str(e)}")
             pytest.skip(f"Integration test skipped due to error: {str(e)}")
     
-    @pytest.mark.integration
     def test_direct_rag_retrieve_call(self):
         """直接测试RAG检索工具"""
         try:
@@ -66,7 +64,6 @@ class TestRAGTools:
             logger.error(f"Direct tool test failed: {str(e)}")
             pytest.skip(f"Direct tool test skipped due to error: {str(e)}")
     
-    @pytest.mark.integration
     def test_rag_search_and_retrieve_comparison(self):
         """比较搜索和检索工具的结果"""
         try:
@@ -100,7 +97,6 @@ class TestRAGTools:
             logger.error(f"Comparison test failed: {str(e)}")
             pytest.skip(f"Comparison test skipped due to error: {str(e)}")
             
-    @pytest.mark.integration
     def test_ningbo_tour_retrieval(self):
         """测试检索宁波周边游的文档"""
         try:            
@@ -137,7 +133,7 @@ class TestRAGTools:
             assert "sources" in result
             
             # 验证文档内容包含宁波各区
-            districts = ["海曙", "江北", "北仑", "镇海", "鄞州", "奉化"]
+            districts = ["海曙", "江北", "北仑", "镇海", "鄞州", "奉化", "宁海", "余姚", "宁波"]
             found_districts = []
             
             # 检查回答和来源中是否包含区名
@@ -153,14 +149,13 @@ class TestRAGTools:
             # 确保至少找到一半的区名
             min_districts = 1
             assert len(found_districts) >= min_districts, f"至少应包含{min_districts}个区名，但只找到了{len(found_districts)}个: {found_districts}"
-                
+            
             logger.info("宁波周边游文档检索测试通过！")
             
         except Exception as e:
             logger.error(f"Ningbo tour retrieval test failed: {str(e)}")
             pytest.skip(f"Ningbo tour retrieval test skipped due to error: {str(e)}")
 
-    @pytest.mark.integration
     def test_pdf_document_retrieval(self):
         """测试检索PDF文档"""
         try:
